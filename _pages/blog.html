@@ -1,0 +1,30 @@
+---
+layout: default
+title: Writing — Stacy Shelley
+permalink: /blog/
+---
+
+<div class="page-header">
+  <p class="section-label">Writing</p>
+  <h1>Ideas on cybersecurity,<br>marketing, and building things.</h1>
+  <p>GTM strategy, leadership, industry trends, and what two exits taught me about growth.</p>
+</div>
+
+<div class="blog-page">
+  {% if site.posts.size > 0 %}
+  <div class="post-grid">
+    {% for post in site.posts %}
+    <a class="post-card" href="{{ post.url }}">
+      <p class="post-tag">{{ post.category | default: "Writing" }}</p>
+      <p class="post-title">{{ post.title }}</p>
+      <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
+      <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="blog-empty">
+    <p>Posts are coming soon. Check back shortly.</p>
+  </div>
+  {% endif %}
+</div>

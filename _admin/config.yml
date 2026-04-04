@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Category", name: "category", widget: "select", options: ["GTM Strategy", "Leadership", "Cybersecurity", "Career", "Industry Trends"], required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false, hint: "A short summary shown on the blog index page." }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+
+      - name: "about"
+        label: "Background Page"
+        file: "_pages/about.html"
+        fields:
+          - { label: "Title", name: "title", widget: "hidden", default: "Background — Stacy Shelley" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "default" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/about/" }
+          - { label: "Your Story", name: "story", widget: "markdown", hint: "The main narrative paragraphs at the top of your background page." }
+          - { label: "Pull Quote", name: "pull_quote", widget: "string", hint: "The highlighted quote that appears in your about page." }
+          - { label: "Outside of Work", name: "outside_work", widget: "markdown", hint: "The personal section at the bottom of your background page." }
+
+      - name: "homepage"
+        label: "Homepage"
+        file: "index.html"
+        fields:
+          - { label: "Title", name: "title", widget: "hidden", default: "Stacy Shelley, Cybersecurity Marketing Executive" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "default" }
+          - { label: "Hero Statement", name: "hero_statement", widget: "text", hint: "The short paragraph below your name on the homepage." }
+          - { label: "About Paragraph 1", name: "about_p1", widget: "text" }
+          - { label: "About Paragraph 2", name: "about_p2", widget: "text" }
+          - { label: "About Paragraph 3", name: "about_p3", widget: "text" }
