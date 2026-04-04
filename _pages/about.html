@@ -2,26 +2,39 @@
 layout: default
 title: Background — Stacy Shelley
 permalink: /about/
+headline: "The person behind the pipeline."
+subheading: "Cybersecurity marketer, team builder, two-time exit veteran, and lifelong learner."
+pull_quote: "I do not inherit strategies. I build them — and I build the teams that execute them."
+my_story: |
+  I grew up drawn to the intersection of ideas and action — the place where a sharp message meets the right market at exactly the right moment. That instinct led me into marketing, and two decades of working in cybersecurity have only sharpened it.
+
+  I have spent my career at the early and growth stages of companies where the playbook does not yet exist. At Secureworks, I helped build the marketing function as the company scaled from $8M to over $100M ARR through its acquisition by Dell. At PhishLabs, I did it again — taking the company from under $2M to $26M ARR and positioning it as a category leader in Digital Risk Protection ahead of its acquisition by Fortra. Most recently at Fortra, I led marketing for a $200M+ ARR portfolio of defensive security solutions.
+
+  Two exits. Three companies. One consistent throughline: building the kind of GTM engine that makes growth inevitable and acquisition logical.
+outside_work: |
+  I am based in the mountains of Western North Carolina, which does a good job of keeping things in perspective. When I am not thinking about GTM strategy, I am on a soccer field, exploring the Blue Ridge, or figuring out how to apply AI tools to things that have nothing to do with AI.
+
+  I am also a devoted student of the craft of building things — teams, brands, categories, companies. If that is what you are working on, I would love to talk.
+speaking: |
+  I speak and write regularly on cybersecurity go-to-market strategy, category creation, and building marketing organizations inside high-growth companies. If you are interested in having me speak at your event or contribute to a publication, reach out via LinkedIn or email.
 ---
 
 <div class="page-header">
   <p class="section-label">Background</p>
-  <h1>The person behind the pipeline.</h1>
-  <p>Cybersecurity marketer, team builder, two-time exit veteran, and lifelong learner.</p>
+  <h1>{{ page.headline }}</h1>
+  <p>{{ page.subheading }}</p>
 </div>
 
 <div class="about-page">
   <div class="about-page-grid">
 
     <div class="about-photo-block">
-      <!-- Replace the placeholder below with your actual photo once you have one.
-           Save your image to the /assets/images/ folder in your Jekyll project,
-           then swap the placeholder div for:
+      <!-- To add your photo: save it to /assets/images/stacy-shelley.jpg
+           then replace the placeholder div below with:
            <img src="/assets/images/stacy-shelley.jpg" alt="Stacy Shelley" class="about-photo"> -->
       <div class="about-photo-placeholder">
         <span>Photo<br>coming soon</span>
       </div>
-
       <div class="about-social">
         <a href="https://www.linkedin.com/in/stacyshelley/" target="_blank">LinkedIn</a>
         <a href="mailto:stacy.shelley1408@gmail.com">Email me</a>
@@ -29,21 +42,10 @@ permalink: /about/
     </div>
 
     <div class="about-content">
-
       <h2>My story</h2>
-      <p>
-        I grew up drawn to the intersection of ideas and action — the place where a sharp message meets the right market at exactly the right moment. That instinct led me into marketing, and two decades of working in cybersecurity have only sharpened it.
-      </p>
-      <p>
-        I have spent my career at the early and growth stages of companies where the playbook does not yet exist. At Secureworks, I helped build the marketing function as the company scaled from $8M to over $100M ARR through its acquisition by Dell. At PhishLabs, I did it again — taking the company from under $2M to $26M ARR and positioning it as a category leader in Digital Risk Protection ahead of its acquisition by Fortra. Most recently at Fortra, I led marketing for a $200M+ ARR portfolio of defensive security solutions.
-      </p>
-      <p>
-        Two exits. Three companies. One consistent throughline: building the kind of GTM engine that makes growth inevitable and acquisition logical.
-      </p>
+      {{ page.my_story | markdownify }}
 
-      <div class="pull-quote">
-        I do not inherit strategies. I build them — and I build the teams that execute them.
-      </div>
+      <div class="pull-quote">{{ page.pull_quote }}</div>
 
       <h2>Career highlights</h2>
       <ul>
@@ -54,19 +56,8 @@ permalink: /about/
       <ul>
         <li>Drove 125% ROI on marketing spend at Fortra, 2022–2024 <span>Fortra</span></li>
         <li>Increased marketing-sourced ARR by +164% in a single year <span>PhishLabs</span></li>
-        <li>Built category leadership in Digital Risk Protection with analyst validation <span>PhishLabs</span></li>
-        <li>Managed RFP response function supporting 200+ enterprise RFPs annually <span>Secureworks</span></li>
-      </ul>
-
-      <h2>Areas of expertise</h2>
-      <ul>
-        <li>GTM strategy and execution <span>Full-stack</span></li>
-        <li>Category creation and market positioning <span>DRP, email security, managed detection</span></li>
-        <li>Account-based marketing <span>ABM</span></li>
-        <li>M&amp;A integration and platform consolidation <span>4 acquisitions</span></li>
-        <li>Analyst and influencer relations <span>Gartner, Forrester, IDC</span></li>
-        <li>Thought leadership and PR <span>50+ organic media mentions annually</span></li>
-        <li>Board-level ROI and budget ownership <span>Series A to $800M+ portfolios</span></li>
+        <li>Built category leadership in Digital Risk Protection <span>PhishLabs</span></li>
+        <li>Supported 200+ enterprise RFPs annually <span>Secureworks</span></li>
       </ul>
 
       <h2>Education</h2>
@@ -76,19 +67,11 @@ permalink: /about/
       </ul>
 
       <h2>Speaking and media</h2>
-      <p>
-        I speak and write regularly on cybersecurity go-to-market strategy, category creation, and building marketing organizations inside high-growth companies. If you are interested in having me speak at your event or contribute to a publication, reach out via LinkedIn or email.
-      </p>
-      <!-- Add specific speaking engagements and media mentions here as they accumulate -->
+      {{ page.speaking | markdownify }}
 
       <h2>Outside of work</h2>
-      <p>
-        I am based in the mountains of Western North Carolina, which does a good job of keeping things in perspective. When I am not thinking about GTM strategy, I am on a soccer field, exploring the Blue Ridge, or figuring out how to apply AI tools to things that have nothing to do with AI.
-      </p>
-      <p>
-        I am also a devoted student of the craft of building things — teams, brands, categories, companies. If that is what you are working on, I would love to talk.
-      </p>
-
+      {{ page.outside_work | markdownify }}
     </div>
+
   </div>
 </div>

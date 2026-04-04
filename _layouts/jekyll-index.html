@@ -1,0 +1,81 @@
+---
+layout: default
+title: Stacy Shelley, Cybersecurity Marketing Executive
+---
+
+{% assign hp = site.data.homepage %}
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <p class="hero-eyebrow">{{ hp.hero.eyebrow }}</p>
+    <h1 class="hero-name">Stacy<br><em>Shelley</em></h1>
+    <p class="hero-title">{{ hp.hero.title }}</p>
+    <p class="hero-statement">{{ hp.hero.statement }}</p>
+    <div class="hero-cta">
+      <a href="{{ hp.hero.cta_primary_url }}" target="_blank" class="btn-primary">{{ hp.hero.cta_primary_text }}</a>
+      <a href="#about" class="btn-secondary">{{ hp.hero.cta_secondary_text }}</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    {% for stat in hp.stats %}
+    <div class="stat-card">
+      <p class="stat-label">{{ stat.label }}</p>
+      <p class="stat-number">{{ stat.number }}</p>
+      <p class="stat-detail">{{ stat.detail }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">About</p>
+      <h2 class="section-heading">{{ hp.about.heading }}</h2>
+      <div class="about-body">
+        {{ hp.about.body | markdownify }}
+      </div>
+    </div>
+
+    <div class="about-sidebar">
+      {% for job in hp.experience %}
+      <div class="sidebar-item">
+        <p class="sidebar-co">{{ job.company }}</p>
+        <p class="sidebar-role">{{ job.role }}</p>
+        <p class="sidebar-years">{{ job.years }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise" class="expertise-section">
+  <div style="text-align: center; margin-bottom: 1rem;">
+    <p class="section-label" style="justify-content: center;">Expertise</p>
+    <h2 class="section-heading">Where I create value</h2>
+  </div>
+  <div class="expertise-grid">
+    {% for item in hp.expertise %}
+    <div class="expertise-item">
+      <div class="expertise-icon">{{ item.icon }}</div>
+      <p class="expertise-name">{{ item.name }}</p>
+      <p class="expertise-desc">{{ item.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <p class="section-label" style="justify-content: center;">Contact</p>
+  <h2 class="section-heading">{{ hp.contact.heading }}</h2>
+  <p class="contact-sub">{{ hp.contact.subheading }}</p>
+  <div class="contact-links">
+    <a href="{{ hp.contact.linkedin_url }}" target="_blank" class="contact-link">LinkedIn</a>
+    <a href="mailto:{{ hp.contact.email }}" class="contact-link">Email me</a>
+  </div>
+</section>
