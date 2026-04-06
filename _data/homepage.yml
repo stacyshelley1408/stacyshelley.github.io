@@ -1,4 +1,5 @@
 hero:
+<<<<<<< HEAD
   eyebrow: "Cybersecurity Marketing Executive"
   title: "VP of Marketing & CMO"
   statement: "I build and scale go-to-market engines for cybersecurity companies. Twice, I have helped take a company from early ARR through acquisition. I turn category ambiguity into pipeline and pipeline into growth that exits."
@@ -35,49 +36,91 @@ stats:
     display: "2 exits"
     detail: "Full-stack GTM leadership, both times"
 
+=======
+  eyebrow: Cybersecurity Marketing Leader
+  title: CMO, VP of Marketing, VP of Product Marketing
+  statement: I build and scale go-to-market engines for cybersecurity companies.
+    Twice, I have helped take a company from early ARR through acquisition. I
+    turn product potential into category leadership and growth.
+  cta_primary_text: Connect on LinkedIn
+  cta_primary_url: https://www.linkedin.com/in/stacyshelley/
+  cta_secondary_text: Learn more
+stats:
+  - label: PhishLabs
+    number: $2M→$26M
+    detail: ARR growth through Fortra acquisition
+  - label: Secureworks
+    number: $8M→$100M+
+    detail: ARR growth through Dell acquisition
+  - label: Track record
+    number: 2 exits
+    detail: Full-stack GTM leadership, both times
+>>>>>>> f4db684a762791a7609589a1c7ef9f31e2238e64
 about:
-  heading: "Done it twice. Ready to do it again."
-  body: |
-    I am a cybersecurity marketing executive with a track record of building go-to-market functions from early stage through successful exit. Not once, but twice. My work spans category creation, demand generation, analyst relations, ABM, and M&A integration, always in service of one goal: turning a great security product into a market-leading brand.
+  heading: Ready to do it again
+  body: >-
+    I am a cybersecurity marketing executive with a track record of building
+    go-to-market functions from early stage through successful exit. Not once,
+    but twice. My work spans category creation, demand generation, analyst
+    relations, ABM, and M&A integration, always in service of one goal: turning
+    a great security product into a clear market leader.
 
+
+<<<<<<< HEAD
     Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I helped scale from under $2M to $26M ARR. Earlier at Secureworks, I was part of the team that grew from $8M to over $100M ARR ahead of the Dell acquisition.
   wink: "(Yes, both companies were acquired. I prefer the term \"catalyst.\")"
   closing: "I thrive in the GTM build-out phase, when the strategy needs to be invented, not inherited. If you are a cybersecurity company ready to scale, I would love to talk."
+=======
+    Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I helped scale from under $2M to $26M ARR and built the foundation that led to Fortra's acquisition. Earlier at Secureworks, I was part of the team that grew from $8M to over $100M ARR ahead of the Dell acquisition. Both exits taught me how to move fast with lean resources, align marketing tightly with sales, and build brand equity that compounds.
 
+>>>>>>> f4db684a762791a7609589a1c7ef9f31e2238e64
+
+    I thrive in the GTM build-out phase when the strategy and operational foundations need to be invented, not inherited. If you are a cybersecurity company ready to scale, I would love to talk.
 experience:
-  - company: "Fortra, Eden Prairie, MN"
-    role: "VP of Marketing, Digital Risk and Email Protection"
-    years: "January 2022 – February 2026"
-  - company: "PhishLabs, Charleston, SC"
-    role: "VP of Marketing"
-    years: "January 2013 – December 2022"
-  - company: "Secureworks, Atlanta, GA"
-    role: "Senior Marketing Manager"
-    years: "January 2006 – December 2013"
-
+  - company: Fortra, Eden Prairie, MN
+    role: VP of Marketing, Digital Risk and Email Protection
+    years: January 2022 – February 2026
+  - company: PhishLabs, Charleston, SC
+    role: VP of Marketing
+    years: January 2013 – December 2022
+  - company: Secureworks, Atlanta, GA
+    role: Senior Marketing Manager
+    years: January 2006 – December 2013
 expertise:
-  - icon: "◎"
-    name: "GTM Leadership"
-    description: "Building go-to-market engines from scratch. Strategy, execution, and team development aligned tightly to revenue."
-  - icon: "◈"
-    name: "Category Creation"
-    description: "Defining the space a product occupies before the market has a name for it. The work that makes analysts and buyers take notice."
-  - icon: "◇"
-    name: "Account-Based Marketing"
-    description: "Precision targeting of high-value accounts. Building ABM programs that align sales and marketing around the same pipeline."
-  - icon: "△"
-    name: "M&A Integration"
-    description: "Navigating the marketing complexity of acquisitions: brand, messaging, team, and culture. Without losing momentum."
-  - icon: "□"
-    name: "Analyst Relations"
-    description: "Building credibility with Gartner, Forrester, and IDC. Turning AR into a strategic asset that feeds pipeline."
-  - icon: "○"
-    name: "Team Building"
-    description: "Hiring and developing full-stack marketing teams at companies in the $5M–$100M ARR range. Culture, structure, and performance."
-
+  - icon: ◎
+    name: GTM Leadership
+    description: Building go-to-market engines from scratch. Strategy, execution,
+      and team development aligned tightly to revenue.
+  - icon: ◈
+    name: Category Creation
+    description: Defining the space a product occupies before the market has a name
+      for it. The work that makes analysts and buyers take notice.
+  - icon: ◇
+    name: Account-Based Marketing
+    description: Precision targeting of high-value accounts. Building ABM programs
+      that align sales and marketing around the same pipeline.
+  - icon: △
+    name: M&A Integration
+    description: "Navigating the marketing complexity of acquisitions: brand,
+      messaging, team, and culture. Without losing momentum."
+  - icon: □
+    name: Analyst Relations
+    description: Building credibility with Gartner, Forrester, and IDC. Turning AR
+      into a strategic asset that feeds pipeline.
+  - icon: ○
+    name: Team Building
+    description: Hiring and developing full-stack marketing teams at companies in
+      the $5M–$100M ARR range. Culture, structure, and performance.
 contact:
+<<<<<<< HEAD
   heading: "Let's build something."
   subheading: "Open to VP of Marketing and CMO conversations at cybersecurity companies."
   wink: "Ideally ones that are ready to grow fast. You know who you are."
   linkedin_url: "https://www.linkedin.com/in/stacyshelley/"
   email: "stacy.shelley1408@gmail.com"
+=======
+  heading: Let's build something.
+  subheading: Open to VP of Marketing and CMO conversations at cybersecurity companies.
+  linkedin_url: https://www.linkedin.com/in/stacyshelley/
+  email: stacy.shelley1408@gmail.com
+>>>>>>> f4db684a762791a7609589a1c7ef9f31e2238e64
