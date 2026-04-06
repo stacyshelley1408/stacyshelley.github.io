@@ -1,19 +1,18 @@
 hero:
 <<<<<<< HEAD
   eyebrow: "Cybersecurity Marketing Executive"
-  title: "VP of Marketing & CMO"
+  title: "CMO, VP of Marketing, VP of Product Marketing"
   statement: "I build and scale go-to-market engines for cybersecurity companies. Twice, I have helped take a company from early ARR through acquisition. I turn category ambiguity into pipeline and pipeline into growth that exits."
   aside: "(Both times it ended in an acquisition. Coincidence? Probably not.)"
   cta_primary_text: "Connect on LinkedIn"
   cta_primary_url: "https://www.linkedin.com/in/stacyshelley/"
   cta_secondary_text: "Learn more"
   descriptors:
-    - "GTM Builder."
+    - "GTM Leader."
     - "Category Creator."
     - "Pipeline Maker."
     - "Team Builder."
-    - "Two-time Exit."
-    - "Ready to Scale."
+    
 
 stats:
   - label: "PhishLabs"
@@ -68,7 +67,6 @@ about:
 
 <<<<<<< HEAD
     Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I helped scale from under $2M to $26M ARR. Earlier at Secureworks, I was part of the team that grew from $8M to over $100M ARR ahead of the Dell acquisition.
-  wink: "(Yes, both companies were acquired. I prefer the term \"catalyst.\")"
   closing: "I thrive in the GTM build-out phase, when the strategy needs to be invented, not inherited. If you are a cybersecurity company ready to scale, I would love to talk."
 =======
     Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I helped scale from under $2M to $26M ARR and built the foundation that led to Fortra's acquisition. Earlier at Secureworks, I was part of the team that grew from $8M to over $100M ARR ahead of the Dell acquisition. Both exits taught me how to move fast with lean resources, align marketing tightly with sales, and build brand equity that compounds.
@@ -100,7 +98,7 @@ expertise:
     description: Precision targeting of high-value accounts. Building ABM programs
       that align sales and marketing around the same pipeline.
   - icon: △
-    name: M&A Integration
+    name: "M&A Integration"
     description: "Navigating the marketing complexity of acquisitions: brand,
       messaging, team, and culture. Without losing momentum."
   - icon: □
@@ -115,7 +113,7 @@ contact:
 <<<<<<< HEAD
   heading: "Let's build something."
   subheading: "Open to VP of Marketing and CMO conversations at cybersecurity companies."
-  wink: "Ideally ones that are ready to grow fast. You know who you are."
+  wink: "Ideally ones that are ready to grow. You know who you are."
   linkedin_url: "https://www.linkedin.com/in/stacyshelley/"
   email: "stacy.shelley1408@gmail.com"
 =======
