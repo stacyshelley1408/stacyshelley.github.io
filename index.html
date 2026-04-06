@@ -5,13 +5,21 @@ title: Stacy Shelley, Cybersecurity Marketing Executive
 
 {% assign hp = site.data.homepage %}
 
-<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-text">
     <p class="hero-eyebrow">{{ hp.hero.eyebrow }}</p>
     <h1 class="hero-name">Stacy<br><em>Shelley</em></h1>
-    <p class="hero-title">{{ hp.hero.title }}</p>
-    <p class="hero-statement">{{ hp.hero.statement }}</p>
+
+    <p class="hero-descriptor">
+      <span class="descriptor-prefix">I am a&nbsp;</span><span class="descriptor-word" id="descriptor">{{ hp.hero.descriptors[0] }}</span>
+    </p>
+
+    <p class="hero-statement">
+      {{ hp.hero.statement | replace: "category ambiguity into pipeline", '<span class="warm-line">category ambiguity into pipeline</span>' }}
+    </p>
+
+    <p class="hero-aside">{{ hp.hero.aside }}</p>
+
     <div class="hero-cta">
       <a href="{{ hp.hero.cta_primary_url }}" target="_blank" class="btn-primary">{{ hp.hero.cta_primary_text }}</a>
       <a href="#about" class="btn-secondary">{{ hp.hero.cta_secondary_text }}</a>
@@ -22,25 +30,33 @@ title: Stacy Shelley, Cybersecurity Marketing Executive
     {% for stat in hp.stats %}
     <div class="stat-card">
       <p class="stat-label">{{ stat.label }}</p>
-      <p class="stat-number">{{ stat.number }}</p>
+      <p class="stat-number"{% if stat.stat_id %} id="{{ stat.stat_id }}"{% endif %}>{{ stat.display }}</p>
       <p class="stat-detail">{{ stat.detail }}</p>
     </div>
     {% endfor %}
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
-    <div>
+    <div class="reveal">
       <p class="section-label">About</p>
       <h2 class="section-heading">{{ hp.about.heading }}</h2>
       <div class="about-body">
-        {{ hp.about.body | markdownify }}
+        {% assign paras = hp.about.body | split: "
+
+" %}
+        {% for para in paras %}
+        {% if para != "" %}
+        <p>{{ para }}</p>
+        {% endif %}
+        {% endfor %}
+        <p><span class="about-wink">{{ hp.about.wink }}</span></p>
+        <p>{{ hp.about.closing }}</p>
       </div>
     </div>
 
-    <div class="about-sidebar">
+    <div class="about-sidebar reveal">
       {% for job in hp.experience %}
       <div class="sidebar-item">
         <p class="sidebar-co">{{ job.company }}</p>
@@ -52,15 +68,14 @@ title: Stacy Shelley, Cybersecurity Marketing Executive
   </div>
 </section>
 
-<!-- EXPERTISE -->
 <section id="expertise" class="expertise-section">
-  <div style="text-align: center; margin-bottom: 1rem;">
+  <div style="text-align: center; margin-bottom: 1rem;" class="reveal">
     <p class="section-label" style="justify-content: center;">Expertise</p>
     <h2 class="section-heading">Where I create value</h2>
   </div>
   <div class="expertise-grid">
     {% for item in hp.expertise %}
-    <div class="expertise-item">
+    <div class="expertise-item reveal">
       <div class="expertise-icon">{{ item.icon }}</div>
       <p class="expertise-name">{{ item.name }}</p>
       <p class="expertise-desc">{{ item.description }}</p>
@@ -69,13 +84,61 @@ title: Stacy Shelley, Cybersecurity Marketing Executive
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="contact-section">
   <p class="section-label" style="justify-content: center;">Contact</p>
   <h2 class="section-heading">{{ hp.contact.heading }}</h2>
   <p class="contact-sub">{{ hp.contact.subheading }}</p>
+  <p class="contact-wink">{{ hp.contact.wink }}</p>
   <div class="contact-links">
     <a href="{{ hp.contact.linkedin_url }}" target="_blank" class="contact-link">LinkedIn</a>
     <a href="mailto:{{ hp.contact.email }}" class="contact-link">Email me</a>
   </div>
 </section>
+
+<script>
+  const words = {{ hp.hero.descriptors | jsonify }};
+  let idx = 0;
+  const el = document.getElementById("descriptor");
+
+  setInterval(() => {
+    el.classList.add("exit");
+    setTimeout(() => {
+      idx = (idx + 1) % words.length;
+      el.textContent = words[idx];
+      el.classList.remove("exit");
+      el.classList.add("enter");
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove("enter")));
+    }, 300);
+  }, 2600);
+
+  function countUp(elId, from, to, prefix, suffix, duration) {
+    const target = document.getElementById(elId);
+    if (!target) return;
+    const start = performance.now();
+    function step(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      target.textContent = prefix + Math.round(from + (to - from) * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  let counted = false;
+  const countObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !counted) {
+      counted = true;
+      {% for stat in hp.stats %}{% if stat.stat_id %}
+      setTimeout(() => countUp("{{ stat.stat_id }}", {{ stat.number_from }}, {{ stat.number_to }}, "{{ stat.prefix }}", "{{ stat.suffix }}", {% if stat.stat_id == "stat-1" %}1400{% else %}1800{% endif %}), {% if stat.stat_id == "stat-1" %}200{% else %}500{% endif %});
+      {% endif %}{% endfor %}
+    }
+  }, { threshold: 0.5 });
+
+  const heroVisual = document.querySelector(".hero-visual");
+  if (heroVisual) countObserver.observe(heroVisual);
+
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+</script>

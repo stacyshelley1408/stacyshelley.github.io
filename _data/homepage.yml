@@ -2,19 +2,37 @@ hero:
   eyebrow: "Cybersecurity Marketing Executive"
   title: "VP of Marketing & CMO"
   statement: "I build and scale go-to-market engines for cybersecurity companies. Twice, I have helped take a company from early ARR through acquisition. I turn category ambiguity into pipeline and pipeline into growth that exits."
+  aside: "(Both times it ended in an acquisition. Coincidence? Probably not.)"
   cta_primary_text: "Connect on LinkedIn"
   cta_primary_url: "https://www.linkedin.com/in/stacyshelley/"
   cta_secondary_text: "Learn more"
+  descriptors:
+    - "GTM Builder."
+    - "Category Creator."
+    - "Pipeline Maker."
+    - "Team Builder."
+    - "Two-time Exit."
+    - "Ready to Scale."
 
 stats:
   - label: "PhishLabs"
-    number: "$2M→$26M"
+    number_from: 2
+    number_to: 26
+    prefix: "$"
+    suffix: "M"
+    display: "$2M"
     detail: "ARR growth through Fortra acquisition"
+    stat_id: "stat-1"
   - label: "Secureworks"
-    number: "$8M→$100M+"
+    number_from: 8
+    number_to: 100
+    prefix: "$"
+    suffix: "M+"
+    display: "$8M"
     detail: "ARR growth through Dell acquisition"
+    stat_id: "stat-2"
   - label: "Track record"
-    number: "2 exits"
+    display: "2 exits"
     detail: "Full-stack GTM leadership, both times"
 
 about:
@@ -22,9 +40,9 @@ about:
   body: |
     I am a cybersecurity marketing executive with a track record of building go-to-market functions from early stage through successful exit. Not once, but twice. My work spans category creation, demand generation, analyst relations, ABM, and M&A integration, always in service of one goal: turning a great security product into a market-leading brand.
 
-    Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I helped scale from under $2M to $26M ARR and built the foundation that led to Fortra's acquisition. Earlier at Secureworks, I was part of the team that grew from $8M to over $100M ARR ahead of the Dell acquisition. Both exits taught me how to move fast with lean resources, align marketing tightly with sales, and build brand equity that compounds.
-
-    I thrive in the GTM build-out phase, when the strategy needs to be invented, not inherited. If you are a cybersecurity company ready to scale, I would love to talk.
+    Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I helped scale from under $2M to $26M ARR. Earlier at Secureworks, I was part of the team that grew from $8M to over $100M ARR ahead of the Dell acquisition.
+  wink: "(Yes, both companies were acquired. I prefer the term \"catalyst.\")"
+  closing: "I thrive in the GTM build-out phase, when the strategy needs to be invented, not inherited. If you are a cybersecurity company ready to scale, I would love to talk."
 
 experience:
   - company: "Fortra, Eden Prairie, MN"
@@ -60,5 +78,6 @@ expertise:
 contact:
   heading: "Let's build something."
   subheading: "Open to VP of Marketing and CMO conversations at cybersecurity companies."
+  wink: "Ideally ones that are ready to grow fast. You know who you are."
   linkedin_url: "https://www.linkedin.com/in/stacyshelley/"
   email: "stacy.shelley1408@gmail.com"
