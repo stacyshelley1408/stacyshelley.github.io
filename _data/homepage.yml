@@ -1,19 +1,16 @@
 hero:
-  eyebrow: "Cybersecurity Marketing Executive"
-  title: "VP of Marketing & CMO"
-  statement: "I build and scale go-to-market engines for cybersecurity companies. Twice, I have helped take a company from early ARR through acquisition. I turn category ambiguity into pipeline and pipeline into growth that exits."
-  aside: "(Both times it ended in an acquisition. Coincidence? Probably not.)"
+  eyebrow: "Cybersecurity Marketing Leader"
+  title: "CMO, VP of Marketing, VP of Product Marketing"
+  statement: "I build and scale go-to-market engines for cybersecurity companies. Twice, I have helped take a company from early ARR through acquisition. I turn category ambiguity into clear market leadership and growth."
   cta_primary_text: "Connect on LinkedIn"
   cta_primary_url: "https://www.linkedin.com/in/stacyshelley/"
   cta_secondary_text: "Learn more"
   descriptors:
-    - "GTM Builder."
+    - "GTM Partner."
     - "Category Creator."
     - "Pipeline Maker."
     - "Team Builder."
-    - "Two-time Exit."
-    - "Ready to Scale."
-
+    
 stats:
   - label: "PhishLabs"
     number_from: 2
@@ -36,13 +33,13 @@ stats:
     detail: "Full-stack GTM leadership, both times"
 
 about:
-  heading: "Done it twice. Ready to do it again."
+  heading: "2x successful exits. Ready for #3."
   body: |
     I am a cybersecurity marketing executive with a track record of building go-to-market functions from early stage through successful exit. Not once, but twice. My work spans category creation, demand generation, analyst relations, ABM, and M&A integration, always in service of one goal: turning a great security product into a market-leading brand.
 
     Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I helped scale from under $2M to $26M ARR. Earlier at Secureworks, I was part of the team that grew from $8M to over $100M ARR ahead of the Dell acquisition.
   wink: "(Yes, both companies were acquired. I prefer the term \"catalyst.\")"
-  closing: "I thrive in the GTM build-out phase, when the strategy needs to be invented, not inherited. If you are a cybersecurity company ready to scale, I would love to talk."
+  closing: "I thrive in the GTM build-out phase, delivering the strategies and operations that drive sustainable growth. If you are a cybersecurity company ready to scale, I would love to talk."
 
 experience:
   - company: "Fortra, Eden Prairie, MN"
