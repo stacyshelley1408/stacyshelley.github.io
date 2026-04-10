@@ -19,7 +19,39 @@ speaking: |
   I speak and write regularly on cybersecurity go-to-market strategy, category creation, and building marketing organizations inside high-growth companies. If you are interested in having me speak at your event or contribute to a publication, reach out via LinkedIn or email.
 ---
 
-<div class="page-header">
+<style>
+  .page-header.waterfall-header {
+    max-width: none;
+    background-image:
+      linear-gradient(to bottom, rgba(13, 17, 23, 0.52) 0%, rgba(13, 17, 23, 0.70) 100%),
+      url('/assets/images/waterfall-rock.jpg');
+    background-size: cover;
+    background-position: center 35%;
+    padding: 12rem 4rem 5rem;
+    border-bottom: none;
+  }
+  .page-header.waterfall-header .section-label {
+    color: var(--accent-light);
+  }
+  .page-header.waterfall-header .section-label::before {
+    background: var(--accent-light);
+  }
+  .page-header.waterfall-header h1 {
+    color: var(--warm-white);
+  }
+  .page-header.waterfall-header > p {
+    color: rgba(245, 248, 247, 0.72);
+    font-family: var(--serif);
+    font-style: italic;
+  }
+  @media (max-width: 900px) {
+    .page-header.waterfall-header {
+      padding: 9rem 2rem 4rem;
+    }
+  }
+</style>
+
+<div class="page-header waterfall-header">
   <p class="section-label">Background</p>
   <h1>{{ page.headline }}</h1>
   <p>{{ page.subheading }}</p>
@@ -29,12 +61,7 @@ speaking: |
   <div class="about-page-grid">
 
     <div class="about-photo-block">
-      <!-- To add your photo: save it to /assets/images/stacy-shelley.jpg
-           then replace the placeholder div below with:
-           <img src="/assets/images/stacy-shelley.jpg" alt="Stacy Shelley" class="about-photo"> -->
-      <div class="about-photo-placeholder">
-        <span>Photo<br>coming soon</span>
-      </div>
+      <img src="/assets/images/stacy-shelley-headshot.JPG" alt="Stacy Shelley" class="about-photo">
       <div class="about-social">
         <a href="https://www.linkedin.com/in/stacyshelley/" target="_blank">LinkedIn</a>
         <a href="mailto:stacy.shelley1408@gmail.com">Email me</a>

@@ -30,15 +30,16 @@ stats:
     stat_id: "stat-2"
   - label: "Track record"
     display: "2 exits"
-    detail: "Full-stack GTM leadership, both times"
+    detail: "Early-stage through exit, both times"
 
 about:
   heading: "2 great exits. Ready for #3."
+  pull_quote: "Turning a great security product into a market-leading brand that delivers sustainable growth and enterprise value."
   body: |
-    I am a cybersecurity marketing executive with a track record of building go-to-market functions from early stage through successful exit. Not once, but twice. My work spans category creation, demand generation, analyst relations, ABM, and M&A integration, always in service of one goal: turning a great security product into a market-leading brand.
+    I am a cybersecurity marketing leader with a track record of building go-to-market functions from early stage through successful exit. Not once, but twice. My work spans category creation, demand generation, analyst relations, ABM, and M&A integration, always in service of one goal:
 
     Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I helped scale from under $2M to $26M ARR. Earlier at Secureworks, I was part of the team that grew from $8M to over $100M ARR ahead of the Dell acquisition.
-  closing: "I thrive in the GTM build-out phase, delivering the strategies and operations that drive sustainable growth. If you are a cybersecurity company ready to scale, I would love to talk."
+  closing: "I thrive in the GTM build-out phase, delivering the strategies and foundational programs that drive sustainable growth. If you are a cybersecurity company ready to scale, I would love to talk."
 
 experience:
   - company: "Fortra, Eden Prairie, MN"
@@ -52,28 +53,27 @@ experience:
     years: "January 2006 – December 2013"
 
 expertise:
-  - icon: "◎"
+  - icon: "trending-up"
     name: "GTM Leadership"
     description: "Building go-to-market engines from scratch. Strategy, execution, and team development aligned tightly to revenue."
-  - icon: "◈"
+  - icon: "layers"
     name: "Category Creation"
-    description: "Defining the space a product occupies before the market has a name for it. The work that makes analysts and buyers take notice."
-  - icon: "◇"
+    description: "Defining the space before the market has a name for it. The work that makes analysts and buyers take notice."
+  - icon: "target"
     name: "Account-Based Marketing"
-    description: "Precision targeting of high-value accounts. Building ABM programs that align sales and marketing around the same pipeline."
-  - icon: "△"
+    description: "Precision reach and engagement with ICP accounts. ABM that align sales and marketing around the same pipeline and ARR."
+  - icon: "git-merge"
     name: "M&A Integration"
     description: "Navigating the marketing complexity of acquisitions: brand, messaging, team, and culture. Without losing momentum."
-  - icon: "□"
+  - icon: "bar-chart-2"
     name: "Analyst Relations"
-    description: "Building credibility with Gartner, Forrester, and IDC. Turning AR into a strategic asset that feeds pipeline."
-  - icon: "○"
+    description: "Building credibility with Gartner, Forrester, IDC, etc. Turning AR into a strategic asset that supports growth."
+  - icon: "users"
     name: "Team Building"
     description: "Hiring and developing full-stack marketing teams at companies in the $5M–$100M ARR range. Culture, structure, and performance."
 
 contact:
-  heading: "Let's build something."
-  subheading: "Open to VP of Marketing and CMO conversations at cybersecurity companies."
+  heading: "Let's build something incredible!"
+  subheading: "Open to CMO, VP of Marketing, and VP of Product Marketing conversations at cybersecurity companies."
   wink: "Ideally ones that are ready to grow fast. You know who you are."
   linkedin_url: "https://www.linkedin.com/in/stacyshelley/"
-  email: "stacy.shelley1408@gmail.com"

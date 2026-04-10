@@ -1,5 +1,13 @@
 title: Stacy Shelley
-description: Cybersecurity Marketing Executive
-url: ""
+description: Cybersecurity Marketing Leader
+url: "https://stacyshelley.com"
+baseurl: ""
+
 include:
   - _pages
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github

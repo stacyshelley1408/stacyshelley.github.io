@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Stacy Shelley, Cybersecurity Marketing Executive
+title: Stacy Shelley, Cybersecurity Marketing Leader
 ---
 
 {% assign hp = site.data.homepage %}
@@ -18,24 +18,34 @@ title: Stacy Shelley, Cybersecurity Marketing Executive
       {{ hp.hero.statement | replace: "category ambiguity into pipeline", '<span class="warm-line">category ambiguity into pipeline</span>' }}
     </p>
 
-    <p class="hero-aside">{{ hp.hero.aside }}</p>
-
     <div class="hero-cta">
       <a href="{{ hp.hero.cta_primary_url }}" target="_blank" class="btn-primary">{{ hp.hero.cta_primary_text }}</a>
       <a href="#about" class="btn-secondary">{{ hp.hero.cta_secondary_text }}</a>
     </div>
   </div>
 
-  <div class="hero-visual">
-    {% for stat in hp.stats %}
-    <div class="stat-card">
-      <p class="stat-label">{{ stat.label }}</p>
-      <p class="stat-number"{% if stat.stat_id %} id="{{ stat.stat_id }}"{% endif %}>{{ stat.display }}</p>
-      <p class="stat-detail">{{ stat.detail }}</p>
-    </div>
-    {% endfor %}
-  </div>
+  <div class="hero-photo">
+  <img
+    src="/assets/images/stacy-shelley-headshot.JPG"
+    alt="In front of the waterfall at Moore's Cove in Pisgah National Forest"
+    width="800"
+    height="1000"
+    loading="eager"
+  />
+</div>
 </section>
+
+<div class="stats-strip reveal">
+  {% for stat in hp.stats %}
+  <div class="stat-card">
+    <div class="stat-label">{{ stat.label }}</div>
+    <div class="stat-number" {% if stat.stat_id %}id="{{ stat.stat_id }}"{% endif %}>
+      {{ stat.display }}
+    </div>
+    <div class="stat-detail">{{ stat.detail }}</div>
+  </div>
+  {% endfor %}
+</div>
 
 <section id="about">
   <div class="about-grid">
@@ -49,10 +59,11 @@ title: Stacy Shelley, Cybersecurity Marketing Executive
         {% for para in paras %}
         {% if para != "" %}
         <p>{{ para }}</p>
+        {% if forloop.first and hp.about.pull_quote %}
+        <blockquote class="about-pull-quote">{{ hp.about.pull_quote }}</blockquote>
+        {% endif %}
         {% endif %}
         {% endfor %}
-        <p><span class="about-wink">{{ hp.about.wink }}</span></p>
-        <p>{{ hp.about.closing }}</p>
       </div>
     </div>
 
@@ -64,6 +75,9 @@ title: Stacy Shelley, Cybersecurity Marketing Executive
         <p class="sidebar-years">{{ job.years }}</p>
       </div>
       {% endfor %}
+      <div class="sidebar-item sidebar-closing">
+        <p>{{ hp.about.closing }}</p>
+      </div>
     </div>
   </div>
 </section>
@@ -76,13 +90,23 @@ title: Stacy Shelley, Cybersecurity Marketing Executive
   <div class="expertise-grid">
     {% for item in hp.expertise %}
     <div class="expertise-item reveal">
-      <div class="expertise-icon">{{ item.icon }}</div>
+      <div class="expertise-icon"><i data-feather="{{ item.icon }}"></i></div>
       <p class="expertise-name">{{ item.name }}</p>
       <p class="expertise-desc">{{ item.description }}</p>
     </div>
     {% endfor %}
   </div>
 </section>
+
+<style>
+  #contact.contact-section {
+    background-image:
+      linear-gradient(rgba(13, 17, 23, 0.80), rgba(13, 17, 23, 0.80)),
+      url('/assets/images/rock-veins-rust.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+</style>
 
 <section id="contact" class="contact-section">
   <p class="section-label" style="justify-content: center;">Contact</p>
@@ -117,7 +141,8 @@ title: Stacy Shelley, Cybersecurity Marketing Executive
     const start = performance.now();
     function step(now) {
       const p = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
+      // Expo ease-out: fast start, slow satisfying finish
+      const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
       target.textContent = prefix + Math.round(from + (to - from) * eased) + suffix;
       if (p < 1) requestAnimationFrame(step);
     }
@@ -129,16 +154,21 @@ title: Stacy Shelley, Cybersecurity Marketing Executive
     if (entries[0].isIntersecting && !counted) {
       counted = true;
       {% for stat in hp.stats %}{% if stat.stat_id %}
-      setTimeout(() => countUp("{{ stat.stat_id }}", {{ stat.number_from }}, {{ stat.number_to }}, "{{ stat.prefix }}", "{{ stat.suffix }}", {% if stat.stat_id == "stat-1" %}1400{% else %}1800{% endif %}), {% if stat.stat_id == "stat-1" %}200{% else %}500{% endif %});
+      // Stagger each stat: first starts immediately, second after 300ms
+      setTimeout(() => countUp("{{ stat.stat_id }}", {{ stat.number_from }}, {{ stat.number_to }}, "{{ stat.prefix }}", "{{ stat.suffix }}", 2200), {% if stat.stat_id == "stat-1" %}0{% else %}300{% endif %});
       {% endif %}{% endfor %}
     }
-  }, { threshold: 0.5 });
+  }, { threshold: 0.4 });
 
-  const heroVisual = document.querySelector(".hero-visual");
-  if (heroVisual) countObserver.observe(heroVisual);
+  const statsStrip = document.querySelector(".stats-strip");
+  if (statsStrip) countObserver.observe(statsStrip);
 
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
   }, { threshold: 0.1 });
   document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+  // Replace <i data-feather="..."> with inline SVGs
+  if (typeof feather !== 'undefined') feather.replace();
+  else document.addEventListener('DOMContentLoaded', () => { if (typeof feather !== 'undefined') feather.replace(); });
 </script>

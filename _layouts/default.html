@@ -8,20 +8,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" defer></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --slate: #1a1f2e;
-    --slate-mid: #2d3444;
-    --accent: #8b9eb7;
-    --accent-light: #c8d4e3;
-    --warm: #c4622d;
-    --warm-white: #faf9f7;
-    --soft-gray: #f3f2ef;
+    --slate: #0d1117;
+    --slate-mid: #1c2b35;
+    --accent: #1a8a80;
+    --accent-light: #5ab8b0;
+    --warm: #00695c;
+    --warm-white: #f5f8f7;
+    --soft-gray: #eaf1f0;
     --text-muted: #6b7280;
     --text-light: #9ca3af;
-    --border: #e8e6e1;
+    --border: #ccdeda;
     --serif: 'Cormorant Garamond', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
   }
@@ -46,8 +47,21 @@
   .nav-links a:hover { color: var(--slate); }
 
   /* HERO */
-  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0 4rem; gap: 4rem; }
-  .hero-text { padding-top: 5rem; }
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 4rem;
+    overflow: hidden;
+  }
+  .hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 52%;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
 
   .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
   .hero-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); }
@@ -73,13 +87,146 @@
   .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.75rem; border: 1px solid var(--border); color: var(--slate); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; transition: border-color 0.2s; }
   .btn-secondary:hover { border-color: var(--slate); }
 
-  /* STAT CARDS */
-  .hero-visual { display: flex; flex-direction: column; gap: 1px; padding-top: 5rem; }
-  .stat-card { background: var(--soft-gray); padding: 2rem; border-left: 2px solid var(--accent-light); transition: border-color 0.3s; }
-  .stat-card:hover { border-color: var(--warm); }
-  .stat-number { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; color: var(--slate); line-height: 1; margin-bottom: 0.25rem; }
-  .stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
-  .stat-detail { font-size: 0.85rem; color: var(--text-light); font-style: italic; }
+  /* HERO PHOTO — bottom-anchored portrait */
+  /* Photo is absolutely positioned at the bottom-right of the hero.
+     It rises from the bottom edge and fades out at the top,
+     so it feels grounded in the space rather than boxed. */
+  .hero-photo {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 42%;
+    height: 92%;
+    z-index: 1;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    /* Fades in from transparent at the top, fully solid by ~30%.
+       Left edge softens into the background. */
+    -webkit-mask-image:
+      linear-gradient(to right,  transparent 0%, black 18%, black 100%),
+      linear-gradient(to bottom, transparent 0%, black 28%, black 100%);
+    -webkit-mask-composite: source-in;
+            mask-image:
+      linear-gradient(to right,  transparent 0%, black 18%, black 100%),
+      linear-gradient(to bottom, transparent 0%, black 28%, black 100%);
+            mask-composite: intersect;
+  }
+
+  /* On mobile, stack photo below text as a portrait crop */
+  @media (max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 6rem 2rem 0;
+      gap: 0;
+    }
+    .hero-text {
+      max-width: 100%;
+      padding-bottom: 2rem;
+    }
+    .hero-photo {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      width: 100%;
+      height: 70vw;
+      max-height: 380px;
+    }
+    .hero-photo img {
+      object-position: center 20%;
+      -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+              mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+      -webkit-mask-composite: unset;
+              mask-composite: unset;
+    }
+  }
+
+/* STATS STRIP */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--slate);
+}
+
+.stats-strip .stat-card {
+  padding: 3.5rem 3rem;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+
+.stats-strip .stat-card:last-child {
+  border-right: none;
+}
+
+.stats-strip .stat-card:hover {
+  background: var(--slate-mid);
+}
+
+/* Subtle warm accent line at top on hover */
+.stats-strip .stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--warm);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.stats-strip .stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stat-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.stat-number {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--warm-white);
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.02em;
+}
+
+.stat-detail {
+  font-size: 0.82rem;
+  color: var(--accent-light);
+  line-height: 1.5;
+  font-weight: 300;
+  max-width: 22ch;
+}
+
+@media (max-width: 900px) {
+  .stats-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-strip .stat-card {
+    padding: 2.5rem 2rem;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .stats-strip .stat-card:last-child {
+    border-bottom: none;
+  }
+}
 
   /* SECTION COMMON */
   section { padding: 7rem 4rem; }
@@ -92,19 +239,32 @@
   .about-body { font-size: 1rem; line-height: 1.9; color: var(--text-muted); font-weight: 300; }
   .about-body p + p { margin-top: 1.25rem; }
   .about-wink { color: var(--warm); font-style: italic; }
+  .about-pull-quote {
+    border-left: 2px solid var(--warm);
+    margin: 2rem 0;
+    padding: 0.75rem 1.75rem;
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--slate);
+    line-height: 1.6;
+  }
   .about-sidebar { padding-top: 1rem; }
   .sidebar-item { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
   .sidebar-item:first-child { border-top: 1px solid var(--border); }
   .sidebar-co { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.25rem; }
   .sidebar-role { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--slate); margin-bottom: 0.2rem; }
   .sidebar-years { font-size: 0.8rem; color: var(--text-light); }
+  .sidebar-closing p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; font-style: italic; }
 
   /* EXPERTISE */
   .expertise-section { background: var(--soft-gray); }
   .expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 3rem; background: var(--border); }
   .expertise-item { background: var(--soft-gray); padding: 2.5rem 2rem; transition: background 0.2s; }
   .expertise-item:hover { background: var(--warm-white); }
-  .expertise-icon { font-size: 1.5rem; margin-bottom: 1rem; color: var(--warm); opacity: 1; }
+  .expertise-icon { margin-bottom: 1.25rem; }
+  .expertise-icon svg { width: 1.75rem; height: 1.75rem; stroke: var(--warm); stroke-width: 1.5; fill: none; display: block; }
   .expertise-name { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--slate); margin-bottom: 0.5rem; }
   .expertise-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
 
@@ -229,7 +389,7 @@
 
 <footer>
   <p>&copy; {{ site.time | date: '%Y' }} Stacy Shelley. All rights reserved.</p>
-  <p>Cybersecurity Marketing Executive</p>
+  <p>Cybersecurity Marketing Leader</p>
 </footer>
 
 </body>
