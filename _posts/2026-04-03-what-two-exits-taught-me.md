@@ -4,6 +4,7 @@ title: "What two exits taught me about building a GTM engine"
 date: 2026-04-03
 category: GTM Strategy
 excerpt: "Most marketing leaders talk about scaling. Fewer have done it twice, inside companies that went on to be acquired. Here is what I learned."
+published: false
 ---
 
 Most marketing leaders talk about scaling. Fewer have done it twice, inside companies that went on to be acquired. Here is what I learned.
