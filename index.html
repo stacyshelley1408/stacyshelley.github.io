@@ -29,7 +29,6 @@ title: Stacy Shelley, Cybersecurity Marketing Leader
         <div class="teaser-slot" id="teaser-slot">
           {% for post in site.posts limit:3 %}
           <div class="teaser-item {% if forloop.first %}active{% else %}below{% endif %}">
-            <div class="teaser-cat">{{ post.category }}</div>
             <a class="teaser-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
           </div>
           {% endfor %}
