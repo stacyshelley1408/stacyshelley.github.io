@@ -299,6 +299,72 @@
   .hero-visual .stat-card:nth-child(1) { animation: fadeUp 0.7s 0.30s ease forwards; opacity: 0; }
   .hero-visual .stat-card:nth-child(2) { animation: fadeUp 0.7s 0.45s ease forwards; opacity: 0; }
   .hero-visual .stat-card:nth-child(3) { animation: fadeUp 0.7s 0.60s ease forwards; opacity: 0; }
+  .latest-teaser { animation-delay: 0.60s; }
+
+  /* LATEST WRITING TEASER */
+  .latest-teaser {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 44ch;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .teaser-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+    padding-top: 0.15rem;
+    flex-shrink: 0;
+  }
+  .teaser-slot {
+    position: relative;
+    min-height: 3.4rem;
+    flex: 1;
+    overflow: hidden;
+  }
+  .teaser-item {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .teaser-item.active { opacity: 1; transform: translateY(0); }
+  .teaser-item.above  { opacity: 0; transform: translateY(-8px); }
+  .teaser-item.below  { opacity: 0; transform: translateY(8px); }
+  .teaser-cat {
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 0.2rem;
+  }
+  .teaser-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--slate);
+    font-style: italic;
+    line-height: 1.3;
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s;
+  }
+  .teaser-title:hover { color: var(--accent); }
+  .teaser-progress {
+    display: flex;
+    gap: 0.3rem;
+    margin-top: 0.6rem;
+  }
+  .t-dot {
+    width: 16px; height: 2px;
+    background: var(--border);
+    transition: background 0.3s, width 0.3s;
+    cursor: pointer;
+  }
+  .t-dot.on { background: var(--accent); width: 24px; }
 
   /* PAGE HEADER (About & Blog pages) */
   .page-header { padding: 10rem 4rem 4rem; border-bottom: 1px solid var(--border); max-width: 860px; }

@@ -22,6 +22,25 @@ title: Stacy Shelley, Cybersecurity Marketing Leader
       <a href="{{ hp.hero.cta_primary_url }}" target="_blank" class="btn-primary">{{ hp.hero.cta_primary_text }}</a>
       <a href="#about" class="btn-secondary">{{ hp.hero.cta_secondary_text }}</a>
     </div>
+
+    <div class="latest-teaser">
+      <span class="teaser-label">Latest</span>
+      <div>
+        <div class="teaser-slot" id="teaser-slot">
+          {% for post in site.posts limit:3 %}
+          <div class="teaser-item {% if forloop.first %}active{% else %}below{% endif %}">
+            <div class="teaser-cat">{{ post.category }}</div>
+            <a class="teaser-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="teaser-progress" id="teaser-dots">
+          {% for post in site.posts limit:3 %}
+          <div class="t-dot {% if forloop.first %}on{% endif %}" onclick="teaserGo({{ forloop.index0 }})"></div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="hero-photo">
@@ -162,6 +181,33 @@ title: Stacy Shelley, Cybersecurity Marketing Leader
 
   const statsStrip = document.querySelector(".stats-strip");
   if (statsStrip) countObserver.observe(statsStrip);
+
+  // Latest writing teaser — cycles through 3 most recent posts
+  (function() {
+    const items = document.querySelectorAll('#teaser-slot .teaser-item');
+    const dots  = document.querySelectorAll('#teaser-dots .t-dot');
+    if (items.length < 2) return;
+    let cur = 0;
+
+    window.teaserGo = function(next) {
+      if (next === cur) return;
+      const prev = cur;
+      items[prev].className = 'teaser-item above';
+      dots[prev].classList.remove('on');
+      setTimeout(() => { items[prev].className = 'teaser-item below'; }, 20);
+      items[next].className = 'teaser-item active';
+      dots[next].classList.add('on');
+      cur = next;
+      resetTimer();
+    };
+
+    let timer;
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => { teaserGo((cur + 1) % items.length); }, 3500);
+    }
+    resetTimer();
+  })();
 
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
