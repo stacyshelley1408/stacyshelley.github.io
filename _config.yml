@@ -3,6 +3,8 @@ description: Cybersecurity Marketing Leader
 url: "https://stacyshelley.com"
 baseurl: ""
 
+permalink: /:year/:month/:day/:title/
+
 include:
   - _pages
 

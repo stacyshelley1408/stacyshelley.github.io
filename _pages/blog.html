@@ -16,7 +16,7 @@ subheading: "GTM strategy, leadership, industry trends, and what two exits taugh
   {% if site.posts.size > 0 %}
   <div class="post-grid">
     {% for post in site.posts %}
-    <a class="post-card" href="{{ post.url }}">
+    <a class="post-card" href="{{ post.url | relative_url }}">
       <p class="post-tag">{{ post.category | default: "Writing" }}</p>
       <p class="post-title">{{ post.title }}</p>
       <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
