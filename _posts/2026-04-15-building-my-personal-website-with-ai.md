@@ -36,6 +36,6 @@ Bug hunting and basic security checks especially. I didn't have to run tools mys
 
 **AI helps with structure, not substance.** My writing is my writing. I used Claude for light editing and to break content into formats that work better in the design context of the site. It didn't generate my thinking or my voice. It handled the plumbing, giving me more time to work on the substance.
 
-Here's my site by the way: [stacyshelley.com](https://stacyshelley.com) (super creative domain, I know...). If I thought of it as a product, I'd say it's v1. I'm happy with it (for now at least) and I look forward to publishing there for years to come. Plus, I learned some genuinely useful things about using AI in the process.
+Here's my site by the way: [stacyshelley.com](https://stacyshelley.com) (super creative domain, I know...). If I thought of my site as a product, I'd say it's v1. I'm happy with it (for now at least) and I look forward to publishing there for years to come. Plus, I learned some genuinely useful things about using AI in the process.
 
 Not a bad trade for a few hours a week.
