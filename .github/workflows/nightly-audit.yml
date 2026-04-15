@@ -130,33 +130,35 @@ jobs:
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: |
-          python3 << 'PYEOF'
-          import os, json, urllib.request, urllib.error
+          SUBJECT=$(cat /tmp/email-subject.txt)
+          BODY=$(cat /tmp/email-body.txt)
 
-          subject = open("/tmp/email-subject.txt").read().strip()
-          body    = open("/tmp/email-body.txt").read().strip()
+          # Build JSON payload using Python to safely escape the body text
+          PAYLOAD=$(python3 -c "
+          import json, sys
+          print(json.dumps({
+            'from': 'onboarding@resend.dev',
+            'to': ['stacy.shelley1408@gmail.com'],
+            'subject': open('/tmp/email-subject.txt').read().strip(),
+            'text': open('/tmp/email-body.txt').read().strip()
+          }))
+          ")
 
-          payload = {
-              "from": "onboarding@resend.dev",  # swap to audit@stacyshelley.com once domain is verified
-              "to":   ["stacy.shelley1408@gmail.com"],
-              "subject": subject,
-              "text": body
-          }
+          echo "Sending email via Resend..."
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -X POST https://api.resend.com/emails \
+            -H "Authorization: Bearer $RESEND_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD")
 
-          req = urllib.request.Request(
-              "https://api.resend.com/emails",
-              data=json.dumps(payload).encode(),
-              headers={
-                  "Authorization": f"Bearer {os.environ['RESEND_API_KEY']}",
-                  "Content-Type": "application/json"
-              },
-              method="POST"
-          )
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -1)
+          BODY_RESP=$(echo "$RESPONSE" | head -1)
 
-          try:
-              urllib.request.urlopen(req)
-              print("Alert email sent via Resend.")
-          except urllib.error.HTTPError as e:
-              print(f"Failed to send email: {e.code} {e.read().decode()}")
-              raise
-          PYEOF
+          echo "HTTP Status: $HTTP_STATUS"
+          echo "Response: $BODY_RESP"
+
+          if [ "$HTTP_STATUS" -lt 200 ] || [ "$HTTP_STATUS" -ge 300 ]; then
+            echo "Failed to send email."
+            exit 1
+          fi
+          echo "Alert email sent successfully."
