@@ -1,0 +1,162 @@
+name: Nightly Site Audit
+
+on:
+  schedule:
+    - cron: '0 7 * * *'  # 7am UTC = 3am EDT / midnight PDT
+  workflow_dispatch:     # Allows manual runs from the Actions tab
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Install audit tools
+        run: |
+          gem install bundler-audit --no-document
+          gem install html-proofer --no-document
+
+      # ── Check 1: Gem CVE audit ─────────────────────────────────────────────
+      - name: Update CVE database
+        run: bundle-audit update
+
+      - name: Check gem vulnerabilities
+        id: gem_audit
+        continue-on-error: true
+        run: |
+          bundle-audit check 2>&1 | tee /tmp/gem-audit.txt
+          exit ${PIPESTATUS[0]}
+
+      # ── Check 2: Jekyll build integrity ───────────────────────────────────
+      - name: Build Jekyll site
+        id: jekyll_build
+        continue-on-error: true
+        env:
+          JEKYLL_ENV: production
+        run: |
+          bundle exec jekyll build 2>&1 | tee /tmp/jekyll-build.txt
+          exit ${PIPESTATUS[0]}
+
+      # ── Check 3: Broken internal links ────────────────────────────────────
+      - name: Check for broken links
+        id: link_check
+        continue-on-error: true
+        run: |
+          htmlproofer ./_site \
+            --disable-external \
+            --ignore-missing-alt \
+            2>&1 | tee /tmp/link-check.txt
+          exit ${PIPESTATUS[0]}
+
+      # ── Check 4: Live site availability ───────────────────────────────────
+      - name: Check live site availability
+        id: live_check
+        continue-on-error: true
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://stacyshelley.com)
+          if [ "$STATUS" != "200" ]; then
+            echo "FAILED: stacyshelley.com returned HTTP $STATUS" | tee /tmp/live-check.txt
+            exit 1
+          fi
+          echo "OK: stacyshelley.com returned HTTP $STATUS" | tee /tmp/live-check.txt
+
+      # ── Compile results into email body ───────────────────────────────────
+      - name: Compile audit results
+        id: compile
+        if: always()
+        env:
+          GEM_AUDIT_OUTCOME: ${{ steps.gem_audit.outcome }}
+          JEKYLL_BUILD_OUTCOME: ${{ steps.jekyll_build.outcome }}
+          LINK_CHECK_OUTCOME: ${{ steps.link_check.outcome }}
+          LIVE_CHECK_OUTCOME: ${{ steps.live_check.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 << 'PYEOF'
+          import os
+          from datetime import date
+
+          today = date.today().strftime("%Y-%m-%d")
+
+          def read_log(path, tail=30):
+              try:
+                  with open(path) as f:
+                      lines = f.readlines()
+                  return "".join(lines[-tail:]).strip()
+              except FileNotFoundError:
+                  return "(no output captured)"
+
+          checks = [
+              ("GEM_AUDIT_OUTCOME",   "GEM VULNERABILITY AUDIT", "/tmp/gem-audit.txt"),
+              ("JEKYLL_BUILD_OUTCOME","JEKYLL BUILD",             "/tmp/jekyll-build.txt"),
+              ("LINK_CHECK_OUTCOME",  "BROKEN LINKS",             "/tmp/link-check.txt"),
+              ("LIVE_CHECK_OUTCOME",  "LIVE SITE AVAILABILITY",   "/tmp/live-check.txt"),
+          ]
+
+          sections = []
+          has_failures = False
+          for env_key, label, log_path in checks:
+              if os.environ.get(env_key) == "failure":
+                  has_failures = True
+                  log = read_log(log_path)
+                  sections.append(f"{label} — FAILED\n{'-'*50}\n{log}")
+
+          github_output = os.environ.get("GITHUB_OUTPUT", "/dev/null")
+          with open(github_output, "a") as f:
+              f.write(f"has_failures={'true' if has_failures else 'false'}\n")
+
+          if has_failures:
+              body = "\n\n".join([
+                  f"Nightly audit for stacyshelley.com found issues on {today}.",
+                  *sections,
+                  f"Full run details: {os.environ.get('RUN_URL', '')}"
+              ])
+              with open("/tmp/email-subject.txt", "w") as f:
+                  f.write(f"[Site Audit] stacyshelley.com — Issues Found ({today})")
+              with open("/tmp/email-body.txt", "w") as f:
+                  f.write(body)
+          PYEOF
+
+      # ── Send email via Resend ─────────────────────────────────────────────
+      - name: Send alert email
+        if: steps.compile.outputs.has_failures == 'true'
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          python3 << 'PYEOF'
+          import os, json, urllib.request, urllib.error
+
+          subject = open("/tmp/email-subject.txt").read().strip()
+          body    = open("/tmp/email-body.txt").read().strip()
+
+          payload = {
+              "from": "audit@stacyshelley.com",
+              "to":   ["stacy.shelley1408@gmail.com"],
+              "subject": subject,
+              "text": body
+          }
+
+          req = urllib.request.Request(
+              "https://api.resend.com/emails",
+              data=json.dumps(payload).encode(),
+              headers={
+                  "Authorization": f"Bearer {os.environ['RESEND_API_KEY']}",
+                  "Content-Type": "application/json"
+              },
+              method="POST"
+          )
+
+          try:
+              urllib.request.urlopen(req)
+              print("Alert email sent via Resend.")
+          except urllib.error.HTTPError as e:
+              print(f"Failed to send email: {e.code} {e.read().decode()}")
+              raise
+          PYEOF
