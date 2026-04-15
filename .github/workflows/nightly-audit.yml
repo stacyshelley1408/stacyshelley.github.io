@@ -137,7 +137,7 @@ jobs:
           body    = open("/tmp/email-body.txt").read().strip()
 
           payload = {
-              "from": "audit@stacyshelley.com",
+              "from": "onboarding@resend.dev",  # swap to audit@stacyshelley.com once domain is verified
               "to":   ["stacy.shelley1408@gmail.com"],
               "subject": subject,
               "text": body
