@@ -4,7 +4,7 @@ title: "Differentiation: The Macro and the Micro"
 date: 2026-04-23
 category: GTM Strategy
 excerpt: "\"We need to work on our differentiation\" sounds specific. It's not. Here's the framework I use to figure out what kind of differentiation problem you're actually solving."
-published: false
+published: true
 ---
 
 "We need to work on our differentiation" sounds specific. It's not.
