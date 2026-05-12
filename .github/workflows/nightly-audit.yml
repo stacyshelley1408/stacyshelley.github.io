@@ -138,7 +138,7 @@ jobs:
           import json, sys
           print(json.dumps({
             'from': 'audit@stacyshelley.com',
-            'to': ['stacy.shelley1408@gmail.com'],
+            'to': ['hey@stacyshelley.com'],
             'subject': open('/tmp/email-subject.txt').read().strip(),
             'text': open('/tmp/email-body.txt').read().strip()
           }))

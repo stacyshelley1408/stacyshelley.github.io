@@ -1,0 +1,10 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#1e1e2e"/>
+  <rect x="0" y="0" width="8" height="630" fill="#D85A30"/>
+  <text x="90" y="280" font-family="Georgia, 'Times New Roman', serif" font-size="280" fill="#ffffff" fill-opacity="0.035" font-weight="bold">"</text>
+  <text x="600" y="230" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="88" fill="#ffffff" font-weight="bold" letter-spacing="-1">Marketing.</text>
+  <text x="600" y="310" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="46" fill="#ffffff" fill-opacity="0.85" font-style="italic">I do not think it means what you think it means.</text>
+  <line x1="560" y1="370" x2="640" y2="370" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1"/>
+  <text x="600" y="410" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#ffffff" fill-opacity="0.38">Every marketing leader, internally, at least once a week</text>
+  <text x="1160" y="604" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#ffffff" fill-opacity="0.2" letter-spacing="0.5">stacyshelley.com</text>
+</svg>
