@@ -1,0 +1,420 @@
+---
+title: Work With Me — Stacy Shelley
+layout: default
+permalink: /services/
+---
+
+<style>
+  /* SERVICES PAGE — Option C: Numbered list */
+
+  /* HEADER */
+  .svc-header {
+    position: relative;
+    overflow: hidden;
+    padding: 10rem 4rem 4rem;
+    background: var(--slate);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    text-align: center;
+  }
+
+  .svc-header-texture {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+
+  .svc-header-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .svc-header .section-label {
+    color: var(--accent-light);
+    justify-content: center;
+  }
+
+  .svc-header .section-label::before {
+    display: none;
+  }
+
+  .svc-header .section-label::after {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--accent-light);
+  }
+
+  /* INTRO */
+  .svc-intro {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: var(--soft-gray);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .svc-intro-col {
+    padding: 2.5rem 2.5rem;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .svc-intro-col:last-child {
+    border-right: none;
+  }
+
+  .svc-intro-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .svc-intro-text {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .svc-intro {
+      grid-template-columns: 1fr;
+    }
+
+    .svc-intro-col {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .svc-intro-col:last-child {
+      border-bottom: none;
+    }
+  }
+
+  /* NUMBERED LIST */
+  .svc-list {
+    padding: 0 4rem;
+    background: var(--warm-white);
+  }
+
+  .svc-item {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    align-items: start;
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 0;
+    gap: 0;
+  }
+
+  .svc-item:last-child {
+    border-bottom: none;
+  }
+
+  .svc-num {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+    padding-top: 0.2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .svc-body {}
+
+  .svc-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .svc-tag::before {
+    content: '';
+    display: block;
+    width: 1rem;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .svc-name {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--slate);
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .svc-tagline {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    max-width: 56ch;
+  }
+
+  .svc-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .svc-pill {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.85rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    background: var(--warm-white);
+    letter-spacing: 0.01em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  /* CTA */
+  .svc-cta {
+    background: var(--slate);
+    padding: 6rem 4rem;
+    text-align: center;
+  }
+
+  .svc-cta .section-label {
+    color: var(--accent-light);
+    justify-content: center;
+  }
+
+  .svc-cta .section-label::before {
+    display: none;
+  }
+
+  .svc-cta .section-heading {
+    color: var(--warm-white);
+    max-width: 420px;
+    margin: 0 auto 0.75rem;
+  }
+
+  .svc-cta-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent-light);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    display: block;
+  }
+
+  .svc-cta-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    align-items: center;
+  }
+
+  .svc-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--warm-white);
+    font-size: 0.88rem;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid rgba(245,248,247,0.2);
+    padding-bottom: 0.35rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .svc-cta-link:hover {
+    border-color: rgba(245,248,247,0.6);
+    color: var(--warm-white);
+  }
+
+  .svc-cta-link svg {
+    flex-shrink: 0;
+  }
+
+  .svc-cta-arrow {
+    opacity: 0.3;
+    transition: opacity 0.2s;
+  }
+
+  .svc-cta-link:hover .svc-cta-arrow {
+    opacity: 0.7;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .svc-header {
+      padding: 8rem 2rem 3rem;
+    }
+
+    .svc-list {
+      padding: 0 2rem;
+    }
+
+    .svc-item {
+      grid-template-columns: 3.5rem 1fr;
+      padding: 2.5rem 0;
+    }
+
+    .svc-num {
+      font-size: 2.5rem;
+    }
+
+    .svc-cta {
+      padding: 4rem 2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .svc-item {
+      grid-template-columns: 2.75rem 1fr;
+    }
+
+    .svc-num {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<!-- Header -->
+<div class="svc-header reveal">
+  <svg class="svc-header-texture" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,300 C180,265 320,330 500,285 C680,240 780,310 960,270 C1140,228 1280,295 1440,258 L1440,420 L0,420 Z" fill="none" stroke="rgba(26,138,128,0.1)" stroke-width="1"/>
+    <path d="M0,325 C200,288 360,348 550,308 C740,266 850,332 1040,295 C1230,256 1360,318 1440,285 L1440,420 L0,420 Z" fill="none" stroke="rgba(26,138,128,0.08)" stroke-width="1"/>
+    <path d="M0,348 C220,316 390,368 590,334 C790,298 910,356 1110,322 C1310,286 1400,340 1440,315 L1440,420 L0,420 Z" fill="none" stroke="rgba(26,138,128,0.06)" stroke-width="1"/>
+    <path d="M0,265 C160,242 290,278 460,252 C630,225 730,268 920,242 C1110,215 1240,258 1440,228 L1440,420 L0,420 Z" fill="none" stroke="rgba(26,138,128,0.07)" stroke-width="1"/>
+    <path d="M0,235 C140,215 270,248 440,225 C610,200 710,240 900,215 C1090,190 1220,230 1440,200 L1440,420 L0,420 Z" fill="none" stroke="rgba(26,138,128,0.05)" stroke-width="1"/>
+    <path d="M0,200 C120,182 250,214 420,194 C590,172 690,208 880,186 C1070,163 1200,200 1440,172" fill="none" stroke="rgba(26,138,128,0.04)" stroke-width="1"/>
+    <path d="M0,368 C240,342 420,382 630,358 C840,332 960,372 1170,348 C1350,326 1420,358 1440,342 L1440,420 L0,420 Z" fill="none" stroke="rgba(26,138,128,0.05)" stroke-width="1"/>
+  </svg>
+  <div class="svc-header-content">
+    <h1 style="font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; color: var(--warm-white); margin-bottom: 0.75rem;">
+      High Impact Marketing<br><em style="font-style: italic; color: var(--accent-light);">for Stealth to Series C</em>
+    </h1>
+    <p style="font-size: 1.1rem; font-style: italic; font-family: var(--serif); color: rgba(245,248,247,0.55); max-width: 52ch; margin: 0 auto;">
+      Fractional, advisory, and project-based services that unlock growth.
+    </p>
+  </div>
+</div>
+
+<!-- Intro -->
+<div class="svc-intro reveal">
+  <div class="svc-intro-col">
+    <p class="svc-intro-label">Growth</p>
+    <p class="svc-intro-text">Are you unlocking your full growth potential at every stage?</p>
+  </div>
+  <div class="svc-intro-col">
+    <p class="svc-intro-label">Scale</p>
+    <p class="svc-intro-text">Is your marketing built to scale or just to survive the moment?</p>
+  </div>
+  <div class="svc-intro-col">
+    <p class="svc-intro-label">Value</p>
+    <p class="svc-intro-text">Are you building the enterprise value to choose what comes next?</p>
+  </div>
+</div>
+
+<!-- Numbered services -->
+<div class="svc-list">
+
+  <div class="svc-item reveal">
+    <p class="svc-num">01</p>
+    <div class="svc-body">
+      <h2 class="svc-name">Fractional CMO</h2>
+      <p class="svc-tagline">You need experienced marketing leadership without the full-time hire.</p>
+      <div class="svc-pills">
+        <span class="svc-pill">Annual &amp; quarterly planning</span>
+        <span class="svc-pill">OKRs &amp; budget</span>
+        <span class="svc-pill">ICP &amp; positioning</span>
+        <span class="svc-pill">Messaging refinement</span>
+        <span class="svc-pill">Demand generation</span>
+        <span class="svc-pill">Pipeline programs</span>
+        <span class="svc-pill">Sales &amp; marketing alignment</span>
+        <span class="svc-pill">Team leadership</span>
+        <span class="svc-pill">Vendor oversight</span>
+        <span class="svc-pill">Board-level reporting</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-item reveal">
+    <p class="svc-num">02</p>
+    <div class="svc-body">
+      <h2 class="svc-name">Advisory Access</h2>
+      <p class="svc-tagline">You need a partner that's been on this journey before.</p>
+      <div class="svc-pills">
+        <span class="svc-pill">Strategy calls</span>
+        <span class="svc-pill">Slack, Teams &amp; email access</span>
+        <span class="svc-pill">Deck &amp; GTM plan feedback</span>
+        <span class="svc-pill">Website &amp; announcement review</span>
+        <span class="svc-pill">Network introductions</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-item reveal">
+    <p class="svc-num">03</p>
+    <div class="svc-body">
+      <h2 class="svc-name">Program Assessment</h2>
+      <p class="svc-tagline">You need to understand your strengths and prioritize gaps.</p>
+      <div class="svc-pills">
+        <span class="svc-pill">GTM review</span>
+        <span class="svc-pill">Stakeholder interviews</span>
+        <span class="svc-pill">Resource allocation analysis</span>
+        <span class="svc-pill">Performance analysis</span>
+        <span class="svc-pill">Pragmatic recommendations</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-item reveal">
+    <p class="svc-num">04</p>
+    <div class="svc-body">
+      <h2 class="svc-name">Strategic Projects</h2>
+      <p class="svc-tagline">You have a strategic project that needs a high level operator at the helm.</p>
+      <div class="svc-pills">
+        <span class="svc-pill">Major product launch</span>
+        <span class="svc-pill">New website launch</span>
+        <span class="svc-pill">Positioning &amp; messaging revamp</span>
+        <span class="svc-pill">Competitor analysis</span>
+        <span class="svc-pill">M&amp;A due diligence (GTM)</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="svc-cta reveal">
+  <p class="section-label">Get in touch</p>
+  <h2 class="section-heading">Ready to talk?</h2>
+  <span class="svc-cta-sub">A 30-minute conversation costs nothing. Let's figure out if it makes sense.</span>
+  <div class="svc-cta-links">
+    <a href="mailto:hey@stacyshelley.com" class="svc-cta-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5ab8b0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      hey@stacyshelley.com
+      <svg class="svc-cta-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/stacyshelley/" target="_blank" rel="noopener noreferrer" class="svc-cta-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5ab8b0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      linkedin.com/in/stacyshelley
+      <svg class="svc-cta-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    </a>
+  </div>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
