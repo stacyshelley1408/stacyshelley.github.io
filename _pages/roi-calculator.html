@@ -1,0 +1,410 @@
+---
+title: Security ROI Calculator Builder | Stacy Shelley
+layout: default
+permalink: /projects/roi-calculator/
+---
+
+<style>
+  /* ── PAGE HEADER ── */
+  .proj-header {
+    position: relative;
+    overflow: hidden;
+    padding: 10rem 4rem 5rem;
+    background: var(--slate);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .proj-header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+  }
+
+  .proj-header .section-label { color: var(--accent-light); }
+  .proj-header .section-label::before { background: var(--accent-light); }
+
+  .proj-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--warm-white);
+    margin-bottom: 1rem;
+  }
+
+  .proj-header p {
+    font-size: 1rem;
+    color: rgba(245,248,247,0.6);
+    font-family: var(--serif);
+    font-style: italic;
+    line-height: 1.7;
+    max-width: 56ch;
+  }
+
+  .proj-header-meta {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .proj-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .proj-meta-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .proj-meta-value {
+    font-size: 0.85rem;
+    color: rgba(245,248,247,0.7);
+    font-weight: 300;
+  }
+
+  /* ── EDITORIAL BODY ── */
+  .proj-body {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 4rem;
+    align-items: start;
+  }
+
+  .proj-content { padding-right: 5rem; border-right: 1px solid var(--border); }
+
+  .proj-content h2 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--slate);
+    margin: 2.5rem 0 0.75rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .proj-content h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+
+  .proj-content p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+    max-width: 62ch;
+  }
+
+  .proj-pull-quote {
+    border-left: 2px solid var(--warm);
+    padding: 0.75rem 1.5rem;
+    margin: 2rem 0;
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  /* ── STEPS ── */
+  .proj-steps { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+
+  .proj-step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proj-step:last-child { border-bottom: none; }
+
+  .proj-step-num {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+    padding-top: 0.1rem;
+  }
+
+  .proj-step-body strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--slate);
+    margin-bottom: 0.2rem;
+  }
+
+  .proj-step-body span {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── SIDEBAR ── */
+  .proj-sidebar { padding-left: 3rem; position: sticky; top: 5rem; }
+
+  .proj-sidebar-block {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proj-sidebar-block:first-child { padding-top: 0; }
+  .proj-sidebar-block:last-child { border-bottom: none; }
+
+  .proj-sidebar-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .proj-sidebar-value {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .proj-github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .proj-github-link:hover { color: var(--accent); }
+
+  .proj-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.25rem; }
+
+  .proj-pill {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  /* ── APP EMBED ── */
+  .proj-app-section {
+    background: var(--soft-gray);
+    border-top: 1px solid var(--border);
+  }
+
+  .proj-app-header {
+    padding: 2.5rem 4rem 2rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--warm-white);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .proj-app-header h2 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--slate);
+    margin: 0;
+  }
+
+  .proj-app-header p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .proj-app-frame {
+    width: 100%;
+    height: 820px;
+    border: none;
+    display: block;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .proj-header { padding: 8rem 2rem 4rem; }
+    .proj-header-meta { flex-wrap: wrap; gap: 1.25rem; }
+    .proj-body {
+      grid-template-columns: 1fr;
+      padding: 3rem 2rem;
+      gap: 0;
+    }
+    .proj-content { padding-right: 0; border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 2.5rem; }
+    .proj-sidebar { padding-left: 0; padding-top: 2.5rem; position: static; }
+    .proj-app-header { padding: 2rem; flex-direction: column; gap: 0.5rem; }
+    .proj-app-frame { height: 600px; }
+  }
+</style>
+
+<div class="proj-header reveal">
+  <div class="proj-header-content">
+    <p class="section-label"><a href="/projects/" style="color: inherit; text-decoration: none;">Projects</a> &nbsp;/&nbsp; ROI Calculator</p>
+    <h1>Security ROI<br>Calculator Builder</h1>
+    <p>A no-code tool for cybersecurity marketers to build and embed interactive ROI calculators.</p>
+    <div class="proj-header-meta">
+      <div class="proj-meta-item">
+        <span class="proj-meta-label">Type</span>
+        <span class="proj-meta-value">Open Source Tool</span>
+      </div>
+      <div class="proj-meta-item">
+        <span class="proj-meta-label">Stack</span>
+        <span class="proj-meta-value">React + Vanilla JS widget</span>
+      </div>
+      <div class="proj-meta-item">
+        <span class="proj-meta-label">License</span>
+        <span class="proj-meta-value">MIT</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-body">
+  <div class="proj-content reveal">
+
+    <h2>What it is</h2>
+    <p>Most cybersecurity marketing teams need to quantify risk for prospects. But every time the numbers need to change, or a new product launches, or a different sales team wants a different calculator, they're back in a developer queue. This tool removes that dependency.</p>
+    <p>The ROI Calculator Builder lets a marketer configure a fully custom calculator through a visual interface, defining inputs, writing formulas, and setting branding, then copy a single <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">&lt;script&gt;</code> tag to embed the result anywhere.</p>
+
+    <div class="proj-pull-quote">The math should reflect your product's actual value, not a generic template someone else built for a different market.</div>
+
+    <h2>The cost model</h2>
+    <p>The default template is built specifically for cybersecurity products. It models four cost areas: breach exposure (driven by five IBM-sourced factors), security incident management, staff productivity loss, and compliance and regulatory risk.</p>
+    <p>Breach probability is derived from incident count rather than entered as a standalone input. When a marketer shows that their product reduces incidents by 70%, that reduction flows automatically through to breach exposure — reducing both the frequency and cost of breaches simultaneously. The relationship is transparent and auditable.</p>
+    <p>The model is calibrated to behave differently across the company size spectrum. Breach costs are anchored at 10,000 employees, where IBM's Cost of a Data Breach data is most representative. At large enterprise scale, the incident-to-breach escalation rate decreases — larger organizations tend to have more mature detection and response capabilities. Productivity loss grows sub-linearly with headcount, reflecting the reality that a security incident doesn't consume proportionally more staff attention just because a company is bigger.</p>
+
+    <h2>How to use it</h2>
+    <ol class="proj-steps">
+      <li class="proj-step">
+        <span class="proj-step-num">1</span>
+        <div class="proj-step-body">
+          <strong>Template Info</strong>
+          <span>Set your calculator title, product name, and description. The product name populates automatically in output labels like "Risk Exposure With Acme Shield."</span>
+        </div>
+      </li>
+      <li class="proj-step">
+        <span class="proj-step-num">2</span>
+        <div class="proj-step-body">
+          <strong>Branding</strong>
+          <span>Set your primary color, accent color, and font. Changes reflect immediately in the live preview on the right.</span>
+        </div>
+      </li>
+      <li class="proj-step">
+        <span class="proj-step-num">3</span>
+        <div class="proj-step-body">
+          <strong>Input Fields</strong>
+          <span>Toggle which inputs your prospects see versus which are fixed assumptions. By default, only employee count and FTE cost are visible. Everything else (escalation rates, IR costs, product impact) is pre-set but hidden.</span>
+        </div>
+      </li>
+      <li class="proj-step">
+        <span class="proj-step-num">4</span>
+        <div class="proj-step-body">
+          <strong>Outputs &amp; Formulas</strong>
+          <span>Review or modify the formula for each output. All formulas are plain JavaScript expressions using input variable IDs. Edit them directly or add new outputs.</span>
+        </div>
+      </li>
+      <li class="proj-step">
+        <span class="proj-step-num">5</span>
+        <div class="proj-step-body">
+          <strong>Call to Action</strong>
+          <span>Set your CTA button text and URL. Use a UTM-tagged link to track calculator conversions in your analytics platform.</span>
+        </div>
+      </li>
+      <li class="proj-step">
+        <span class="proj-step-num">6</span>
+        <div class="proj-step-body">
+          <strong>Embed</strong>
+          <span>Switch to the Embed Code tab in the right panel. Copy the script tag and paste it anywhere on your site. No server required. The full configuration is encoded in the tag.</span>
+        </div>
+      </li>
+    </ol>
+
+    <h2>Hosting the widget file</h2>
+    <p>The embed tag generated by the builder points to a copy of <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">roi-widget.js</code> hosted here, so you can test your calculator immediately without setting anything up. That's fine for evaluation, but it's not the right deployment path for production.</p>
+    <p>For any page you're sending real traffic to, download <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">roi-widget.js</code> from the GitHub repo and host it on your own CDN or web server. Then update the <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">src</code> attribute to point to your copy. Your embed will then have no dependency on this site — it won't break if my URL changes, and you control when (or whether) you take updates to the widget.</p>
+    <p>The widget file is intentionally small and self-contained — no framework, no dependencies, no build step required on your end. Drop the file, update the path, done.</p>
+
+  </div>
+
+  <aside class="proj-sidebar reveal">
+
+    <div class="proj-sidebar-block">
+      <p class="proj-sidebar-label">Source Code</p>
+      <p class="proj-sidebar-value">Full source on GitHub. Fork it, self-host it, or deploy your own instance.</p>
+      <a href="https://github.com/stacyshelley1408/ROI-Calc-Builder-Cybersecurity-Product" target="_blank" rel="noopener noreferrer" class="proj-github-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <div class="proj-sidebar-block">
+      <p class="proj-sidebar-label">Tech Stack</p>
+      <div class="proj-pills">
+        <span class="proj-pill">React 19</span>
+        <span class="proj-pill">Vite</span>
+        <span class="proj-pill">Vanilla JS widget</span>
+        <span class="proj-pill">No dependencies</span>
+      </div>
+    </div>
+
+    <div class="proj-sidebar-block">
+      <p class="proj-sidebar-label">Default Cost Model</p>
+      <div class="proj-pills">
+        <span class="proj-pill">Breach exposure</span>
+        <span class="proj-pill">Incident management</span>
+        <span class="proj-pill">Productivity loss</span>
+        <span class="proj-pill">Compliance risk</span>
+      </div>
+    </div>
+
+    <div class="proj-sidebar-block">
+      <p class="proj-sidebar-label">Widget Features</p>
+      <div class="proj-pills">
+        <span class="proj-pill">No-server embed</span>
+        <span class="proj-pill">Before / after comparison</span>
+        <span class="proj-pill">Live formula eval</span>
+        <span class="proj-pill">Brand-configurable</span>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<div class="proj-app-section">
+  <div class="proj-app-header">
+    <h2>Try the Builder</h2>
+    <p>Configure a calculator below and copy the embed code from the right panel.</p>
+  </div>
+  <iframe
+    src="/roi-calculator-app/"
+    class="proj-app-frame"
+    title="Security ROI Calculator Builder"
+    loading="lazy"
+  ></iframe>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>

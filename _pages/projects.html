@@ -1,0 +1,197 @@
+---
+title: Projects — Stacy Shelley
+layout: default
+permalink: /projects/
+---
+
+<style>
+  .projects-header {
+    position: relative;
+    overflow: hidden;
+    padding: 10rem 4rem 4rem;
+    background: var(--slate);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .projects-header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+  }
+
+  .projects-header .section-label { color: var(--accent-light); }
+  .projects-header .section-label::before { background: var(--accent-light); }
+
+  .projects-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--warm-white);
+    margin-bottom: 1rem;
+  }
+
+  .projects-header p {
+    font-size: 1rem;
+    color: rgba(245,248,247,0.55);
+    font-family: var(--serif);
+    font-style: italic;
+    line-height: 1.7;
+    max-width: 52ch;
+  }
+
+  .projects-body {
+    background: var(--warm-white);
+  }
+
+  /* ── project row ── */
+  .project-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .project-row:first-child { border-top: 1px solid var(--border); }
+  .project-row:hover { background: var(--soft-gray); }
+
+  .project-row-content {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+
+  .project-row-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .project-row-tag::before {
+    content: '';
+    display: block;
+    width: 1rem;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .project-row-name {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 300;
+    color: var(--slate);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .project-row-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1.75rem;
+    max-width: 52ch;
+  }
+
+  .project-row-footer {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .project-row-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .project-row-pill {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.7rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .project-row-link {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── image panel ── */
+  .project-row-image-wrap {
+    background: var(--soft-gray);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3rem 2.5rem 3rem 3.5rem;
+  }
+
+  .project-row-image {
+    width: 100%;
+    max-width: 320px;
+    border: 1px solid var(--border);
+    display: block;
+    box-shadow: 0 8px 32px rgba(13,17,23,0.1);
+  }
+
+  @media (max-width: 900px) {
+    .projects-header { padding: 8rem 2rem 3rem; }
+    .project-row { grid-template-columns: 1fr; }
+    .project-row-content { padding: 2.5rem 2rem; border-right: none; }
+    .project-row-image-wrap { padding: 2rem; border-top: 1px solid var(--border); }
+    .project-row-image { max-width: 280px; }
+  }
+</style>
+
+<div class="projects-header reveal">
+  <div class="projects-header-content">
+    <p class="section-label">Projects</p>
+    <h1>Things to Share</h1>
+    <p>Open-source marketing tools built for cybersecurity vendors. Each one solves a problem I kept running into.</p>
+  </div>
+</div>
+
+<div class="projects-body">
+
+  <a href="/projects/roi-calculator/" class="project-row reveal">
+    <div class="project-row-content">
+      <h2 class="project-row-name">Security ROI Calculator Builder</h2>
+      <p class="project-row-desc">A no-code tool for building and embedding interactive ROI calculators. Configure inputs, formulas, and branding visually — then drop a single script tag on any page.</p>
+      <div class="project-row-footer">
+        <div class="project-row-pills">
+          <span class="project-row-pill">React</span>
+          <span class="project-row-pill">Embeddable widget</span>
+          <span class="project-row-pill">Open source</span>
+        </div>
+        <span class="project-row-link">View →</span>
+      </div>
+    </div>
+    <div class="project-row-image-wrap">
+      <img src="/assets/images/roi-calculator-widget.png" alt="Security ROI Calculator widget preview" class="project-row-image">
+    </div>
+  </a>
+
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
