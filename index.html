@@ -27,15 +27,19 @@ title: Stacy Shelley, Cybersecurity Marketing Leader
       <span class="teaser-label">Recent Notes</span>
       <div>
         <div class="teaser-slot" id="teaser-slot">
-          {% for post in site.posts limit:3 %}
-          <div class="teaser-item {% if forloop.first %}active{% else %}below{% endif %}">
+          <div class="teaser-item active">
+            <a class="teaser-title" href="/projects/roi-calculator/">Cybersecurity ROI Calculator Builder</a>
+          </div>
+          {% for post in site.posts limit:4 %}
+          <div class="teaser-item below">
             <a class="teaser-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
           </div>
           {% endfor %}
         </div>
         <div class="teaser-progress" id="teaser-dots">
-          {% for post in site.posts limit:3 %}
-          <div class="t-dot {% if forloop.first %}on{% endif %}" onclick="teaserGo({{ forloop.index0 }})"></div>
+          <div class="t-dot on" onclick="teaserGo(0)"></div>
+          {% for post in site.posts limit:4 %}
+          <div class="t-dot" onclick="teaserGo({{ forloop.index }})"></div>
           {% endfor %}
         </div>
       </div>
