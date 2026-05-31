@@ -276,6 +276,13 @@ permalink: /projects/roi-calculator/
   }
 
   /* ── RESPONSIVE ── */
+  .proj-app-mobile { display: none; }
+
+  @media (max-width: 900px) {
+    .proj-app-frame { display: none; }
+    .proj-app-mobile { display: block; }
+  }
+
   @media (max-width: 900px) {
     .proj-header { padding: 8rem 2rem 4rem; }
     .proj-header-meta { flex-wrap: wrap; gap: 1.25rem; }
@@ -288,6 +295,21 @@ permalink: /projects/roi-calculator/
     .proj-sidebar { padding-left: 0; padding-top: 2.5rem; position: static; }
     .proj-app-header { padding: 2rem; flex-direction: column; gap: 0.5rem; }
     .proj-app-frame { height: 600px; }
+  .proj-app-mobile { display: block; padding: 2rem; text-align: center; }
+  .proj-app-mobile p { font-size: 0.9rem; color: var(--text-muted); font-weight: 300; margin-bottom: 1.25rem; }
+  .proj-app-mobile-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--slate);
+    color: var(--warm-white);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .proj-app-mobile-btn:hover { background: var(--accent); }
   }
 </style>
 
@@ -445,6 +467,10 @@ permalink: /projects/roi-calculator/
     title="Security ROI Calculator Builder"
     loading="lazy"
   ></iframe>
+  <div class="proj-app-mobile">
+    <p>The builder requires a wider screen. Open it in a new tab for the full experience.</p>
+    <a href="/roi-calculator-app/" target="_blank" rel="noopener noreferrer" class="proj-app-mobile-btn">Open the Builder</a>
+  </div>
 </div>
 
 <script>
