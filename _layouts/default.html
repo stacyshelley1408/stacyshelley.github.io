@@ -433,12 +433,49 @@
     .post-page { padding: 3rem 2rem; }
   }
 
+  /* HAMBURGER BUTTON */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin: -0.5rem;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: var(--slate);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform-origin: center;
+  }
+  nav.nav--open .nav-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  nav.nav--open .nav-toggle span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  nav.nav--open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
   @media (max-width: 600px) {
-    nav { flex-direction: column; align-items: center; gap: 0.75rem; padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.25rem; justify-content: center; flex-wrap: wrap; }
-    .hero { padding-top: 8rem; }
-    .hero-text { padding-top: 0; }
-    .page-header { padding-top: 9rem; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: rgba(250, 249, 247, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 0;
+    }
+    nav.nav--open .nav-links { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 0.875rem 1.5rem; font-size: 0.75rem; }
+    .nav-links a.active::after { display: none; }
     .expertise-grid { grid-template-columns: 1fr; }
     .post-grid { grid-template-columns: 1fr; }
   }
@@ -455,6 +492,9 @@
     <li><a href="/blog/"{% if page.url contains "/blog" or page.layout == "post" %} class="active"{% endif %}>Notes</a></li>
     <li><a href="/about/"{% if page.url contains "/about" %} class="active"{% endif %}>About</a></li>
   </ul>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 {{ content }}
@@ -464,5 +504,27 @@
   <p>Cybersecurity Marketing Leader</p>
 </footer>
 
+<script>
+  (function() {
+    var nav = document.querySelector('nav');
+    var toggle = document.querySelector('.nav-toggle');
+    toggle.addEventListener('click', function() {
+      var open = nav.classList.toggle('nav--open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('.nav-links a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        nav.classList.remove('nav--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!nav.contains(e.target)) {
+        nav.classList.remove('nav--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
 </body>
 </html>
