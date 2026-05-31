@@ -211,7 +211,7 @@
           rval.step = inp.step != null ? inp.step : 1;
           rval.addEventListener('input', function () {
             var v = Math.max(
-              inp.min != null ? Number(inp.min) : 0,
+              inp.min != null ? Number(inp.min) : -Infinity,
               Math.min(inp.max != null ? Number(inp.max) : Infinity, parseFloat(this.value) || 0)
             );
             state[inp.id] = v;
