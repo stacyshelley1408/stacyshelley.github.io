@@ -342,6 +342,11 @@ permalink: /projects/roi-calculator/
     <p>For any page you're sending real traffic to, download <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">roi-widget.js</code> from the GitHub repo and host it on your own CDN or web server. Then update the <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">src</code> attribute to point to your copy. Your embed will have no dependency on this site. It won't break if my URL changes, and you control when (or whether) you take updates to the widget.</p>
     <p>The widget file is intentionally small and self-contained. No framework, no dependencies, no build step required on your end. Drop the file, update the path, done.</p>
 
+    <h2>Editing an existing calculator</h2>
+    <p>Your full configuration is encoded in the <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">data-config</code> attribute of the script tag, not stored anywhere on a server. That means the builder has no memory of a calculator you've already deployed. If you come back to make changes, you need to reload your configuration from the tag.</p>
+    <p>Open the builder, go to the Embed Code tab, and paste your existing script tag into the "Load Existing Calculator" section at the bottom. The builder decodes the tag and restores your full configuration. Make your changes, copy the new tag from the top of the panel, and replace the tag on your site.</p>
+    <p>Your browser session is also auto-saved, so if you close the tab mid-edit and come back on the same device, your work will be there. The auto-save is separate from your deployed embed. Publishing always requires copying the new tag and re-deploying it.</p>
+
   </div>
 
   <aside class="proj-sidebar reveal">
