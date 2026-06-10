@@ -327,7 +327,7 @@ permalink: /projects/ci-tracker/
   <div class="proj-header-content">
     <p class="section-label"><a href="/projects/" style="color: inherit; text-decoration: none;">Projects</a> &nbsp;/&nbsp; Competitive Intelligence Tracker</p>
     <h1>Competitive Intelligence Tracker</h1>
-    <p>Automated CI that runs daily on GitHub Actions. Monitors competitor websites, job boards, review platforms, RSS feeds, and Reddit. Delivers alerts and a weekly digest. No server required.</p>
+    <p>An AI classifier reads every signal and scores it by importance. You get an alert when something matters. Everything else rolls up in a weekly digest. Runs free on GitHub Actions with no server required.</p>
     <div class="proj-header-meta">
       <div class="proj-meta-item">
         <span class="proj-meta-label">Type</span>
@@ -354,7 +354,9 @@ permalink: /projects/ci-tracker/
 
     <p>Most competitive intelligence is a tab you check when you remember to. A competitor launches a new product, updates their pricing page, or starts hiring aggressively into a new territory. By the time you notice, the cycle has already played out.</p>
 
-    <p>This tool makes CI continuous. A GitHub Actions workflow runs every day. It monitors competitor websites for copy changes, tracks new job postings by department and seniority, watches review platforms for rating shifts, follows RSS feeds, and searches relevant subreddits for mentions. A Gemini classifier assigns each signal an importance score. High-signal events land in your inbox as a plain-text alert. Everything else rolls up in a Monday morning HTML digest.</p>
+    <p>This tool makes CI continuous. A GitHub Actions workflow runs every day. It monitors competitor websites for copy changes, tracks new job postings by department and seniority, watches review platforms for rating shifts, follows RSS feeds, and searches relevant subreddits for mentions. Every signal gets passed to an AI classifier that assigns a category and an importance score from 1 to 5. Score 4 or above sends an immediate plain-text alert. Everything below rolls up in a Monday morning HTML digest.</p>
+
+    <p>Gemini is the default classifier. It runs on Google's free tier, so the AI layer costs nothing to operate. Prefer Claude? Swap in Anthropic's Haiku by setting a different API key. Want to use a specific model version? One environment variable controls it. If you'd rather run with no AI dependency at all, a keyword-based fallback handles classification without touching any external API.</p>
 
     <p>Configure it once in a YAML file. Push it. It runs itself.</p>
 
@@ -428,7 +430,7 @@ permalink: /projects/ci-tracker/
 
     <details>
       <summary>How signals are classified</summary>
-      <p>Every signal goes through a Gemini classifier (free tier via Google AI Studio) before it's alerted or digested. The classifier assigns a category and an importance score from 1 to 5. Events at or above your configured <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">significance_threshold</code> (default: 4) trigger an immediate alert. Everything below goes to the weekly digest only.</p>
+      <p>Every signal passes through an AI classifier before it's alerted or digested. The classifier assigns a category (pricing, product, hiring, messaging, funding, and so on) and an importance score from 1 to 5. Events at or above your configured <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">significance_threshold</code> (default: 4) trigger an immediate alert. Everything below goes to the weekly digest only.</p>
       <table class="proj-score-table">
         <tbody>
           <tr><td class="proj-score-num">5</td><td>Act today. Funding, acquisition, exec departure, pricing overhaul, product launch.</td></tr>
@@ -438,7 +440,11 @@ permalink: /projects/ci-tracker/
           <tr><td class="proj-score-num">1</td><td>Noise. Ignored.</td></tr>
         </tbody>
       </table>
-      <p>Watch keywords are optional per-company terms that instruct the classifier to bias scores upward when those terms appear in the signal. Use them for product names, executive names, or events you cannot afford to miss. If no AI key is configured, the tool falls back to deterministic keyword-matching rules.</p>
+      <p><strong style="font-weight: 500; color: var(--slate);">Default: Gemini.</strong> The tool ships configured for Google's Gemini Flash Lite model, which is available on the free tier at Google AI Studio. Get a key in two minutes, paste it as a repo secret, done. No credit card required.</p>
+      <p><strong style="font-weight: 500; color: var(--slate);">Prefer Claude?</strong> Set <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">ANTHROPIC_API_KEY</code> instead and the tool uses Claude Haiku for classification. Runs about $1/month at daily frequency. You can also set both keys and get Gemini as primary with Claude as the fallback if Gemini errors out.</p>
+      <p><strong style="font-weight: 500; color: var(--slate);">Want a different model?</strong> Set the <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">GEMINI_MODEL</code> environment variable to any Gemini model string and the classifier uses that instead of the default.</p>
+      <p><strong style="font-weight: 500; color: var(--slate);">No AI at all?</strong> Skip both API keys and the tool falls back to deterministic keyword-matching rules. Less nuanced, but zero external dependencies and still useful.</p>
+      <p>Watch keywords are optional per-company terms that instruct the classifier to bias scores upward when those terms appear in a signal. Use them for product names, executive names, or strategic events you cannot afford to miss.</p>
     </details>
 
   </div>
@@ -472,6 +478,16 @@ permalink: /projects/ci-tracker/
         <span class="proj-pill">Reviews</span>
         <span class="proj-pill">RSS / Atom</span>
         <span class="proj-pill">Reddit</span>
+      </div>
+    </div>
+
+    <div class="proj-sidebar-block">
+      <p class="proj-sidebar-label">AI Classifier</p>
+      <p class="proj-sidebar-value">Gemini by default (free tier). Swap in Claude Haiku or use both as primary + fallback.</p>
+      <div class="proj-pills" style="margin-top: 0.6rem;">
+        <span class="proj-pill">Gemini (default, free)</span>
+        <span class="proj-pill">Claude Haiku</span>
+        <span class="proj-pill">Keyword fallback</span>
       </div>
     </div>
 
