@@ -1,0 +1,501 @@
+---
+title: Competitive Intelligence Tracker | Stacy Shelley
+layout: default
+permalink: /projects/ci-tracker/
+---
+
+<style>
+  /* ── PAGE HEADER ── */
+  .proj-header {
+    position: relative;
+    overflow: hidden;
+    padding: 10rem 4rem 5rem;
+    background: var(--slate);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .proj-header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+  }
+
+  .proj-header .section-label { color: var(--accent-light); white-space: nowrap; }
+  .proj-header .section-label::before { background: var(--accent-light); }
+
+  .proj-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--warm-white);
+    margin-bottom: 1rem;
+  }
+
+  .proj-header p {
+    font-size: 1rem;
+    color: rgba(245,248,247,0.6);
+    font-family: var(--serif);
+    font-style: italic;
+    line-height: 1.7;
+    max-width: 56ch;
+  }
+
+  .proj-header-meta {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .proj-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .proj-meta-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .proj-meta-value {
+    font-size: 0.85rem;
+    color: rgba(245,248,247,0.7);
+    font-weight: 300;
+  }
+
+  /* ── EDITORIAL BODY ── */
+  .proj-body {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 4rem;
+    align-items: start;
+  }
+
+  .proj-content { padding-right: 5rem; border-right: 1px solid var(--border); }
+
+  .proj-content h2 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--slate);
+    margin: 2.5rem 0 0.75rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .proj-content h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+
+  .proj-content p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+    max-width: 62ch;
+  }
+
+  /* ── STEPS ── */
+  .proj-steps { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+
+  .proj-step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proj-step:last-child { border-bottom: none; }
+
+  .proj-step-num {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+    padding-top: 0.1rem;
+  }
+
+  .proj-step-body strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--slate);
+    margin-bottom: 0.2rem;
+  }
+
+  .proj-step-body span {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── SIGNAL TABLE ── */
+  .proj-signal-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+
+  .proj-signal-table th {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    text-align: left;
+    padding: 0 0.75rem 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proj-signal-table td {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    padding: 0.85rem 0.75rem 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .proj-signal-table tr:last-child td { border-bottom: none; }
+
+  .proj-signal-name {
+    font-weight: 500;
+    color: var(--slate);
+    white-space: nowrap;
+    padding-right: 1.5rem !important;
+  }
+
+  /* ── SCORE TABLE ── */
+  .proj-score-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+
+  .proj-score-table td {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    padding: 0.6rem 0.75rem 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  .proj-score-table tr:last-child td { border-bottom: none; }
+
+  .proj-score-num {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--accent);
+    width: 2rem;
+    white-space: nowrap;
+  }
+
+  /* ── SIDEBAR ── */
+  .proj-sidebar { padding-left: 3rem; position: sticky; top: 5rem; }
+
+  .proj-sidebar-block {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proj-sidebar-block:first-child { padding-top: 0; }
+  .proj-sidebar-block:last-child { border-bottom: none; }
+
+  .proj-sidebar-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .proj-sidebar-value {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .proj-github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .proj-github-link:hover { color: var(--accent); }
+
+  .proj-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.25rem; }
+
+  .proj-pill {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  /* ── ACCORDION ── */
+  .proj-content details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .proj-content details summary {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--slate);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.75rem;
+    user-select: none;
+  }
+
+  .proj-content details summary::-webkit-details-marker { display: none; }
+
+  .proj-content details summary::after {
+    content: '+';
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .proj-content details[open] summary::after { content: '-'; }
+
+  /* ── PREVIEW IMAGE ── */
+  .proj-preview {
+    background: var(--soft-gray);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .proj-preview-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    align-self: flex-start;
+    max-width: 1020px;
+    width: 100%;
+  }
+
+  .proj-preview img {
+    width: 100%;
+    max-width: 580px;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 40px rgba(13,17,23,0.18);
+    display: block;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .proj-header { padding: 8rem 2rem 4rem; }
+    .proj-header-meta { flex-wrap: wrap; gap: 1.25rem; }
+    .proj-body {
+      grid-template-columns: 1fr;
+      padding: 3rem 2rem;
+    }
+    .proj-content { padding-right: 0; border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 2.5rem; }
+    .proj-sidebar { padding-left: 0; padding-top: 2.5rem; position: static; }
+    .proj-preview { padding: 2rem; }
+  }
+</style>
+
+<div class="proj-header reveal">
+  <div class="proj-header-content">
+    <p class="section-label"><a href="/projects/" style="color: inherit; text-decoration: none;">Projects</a> &nbsp;/&nbsp; Competitive Intelligence Tracker</p>
+    <h1>Competitive Intelligence Tracker</h1>
+    <p>Automated CI that runs daily on GitHub Actions. Monitors competitor websites, job boards, review platforms, RSS feeds, and Reddit. Delivers alerts and a weekly digest. No server required.</p>
+    <div class="proj-header-meta">
+      <div class="proj-meta-item">
+        <span class="proj-meta-label">Type</span>
+        <span class="proj-meta-value">Open Source Tool</span>
+      </div>
+      <div class="proj-meta-item">
+        <span class="proj-meta-label">Stack</span>
+        <span class="proj-meta-value">Python + GitHub Actions</span>
+      </div>
+      <div class="proj-meta-item">
+        <span class="proj-meta-label">Cost to run</span>
+        <span class="proj-meta-value">Free</span>
+      </div>
+      <div class="proj-meta-item">
+        <span class="proj-meta-label">License</span>
+        <span class="proj-meta-value">MIT</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="proj-body">
+  <div class="proj-content reveal">
+
+    <p>Most competitive intelligence is a tab you check when you remember to. A competitor launches a new product, updates their pricing page, or starts hiring aggressively into a new territory. By the time you notice, the cycle has already played out.</p>
+
+    <p>This tool makes CI continuous. A GitHub Actions workflow runs every day. It monitors competitor websites for copy changes, tracks new job postings by department and seniority, watches review platforms for rating shifts, follows RSS feeds, and searches relevant subreddits for mentions. A Gemini classifier assigns each signal an importance score. High-signal events land in your inbox as a plain-text alert. Everything else rolls up in a Monday morning HTML digest.</p>
+
+    <p>Configure it once in a YAML file. Push it. It runs itself.</p>
+
+    <details>
+      <summary>How to set it up</summary>
+      <ol class="proj-steps">
+        <li class="proj-step">
+          <span class="proj-step-num">1</span>
+          <div class="proj-step-body">
+            <strong>Fork the repo</strong>
+            <span>Use the "Use this template" button on GitHub to create your own copy. You get the full structure and workflow files without the git history.</span>
+          </div>
+        </li>
+        <li class="proj-step">
+          <span class="proj-step-num">2</span>
+          <div class="proj-step-body">
+            <strong>Add secrets</strong>
+            <span>In your repo settings, add five secrets: <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">GEMINI_API_KEY</code> (free from Google AI Studio), <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">SMTP_HOST</code>, <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">SMTP_PORT</code>, <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">SMTP_USER</code>, <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">SMTP_PASSWORD</code>, and <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">ALERT_EMAIL</code>. Gmail works fine with an app password.</span>
+          </div>
+        </li>
+        <li class="proj-step">
+          <span class="proj-step-num">3</span>
+          <div class="proj-step-body">
+            <strong>Edit companies.yml</strong>
+            <span>Replace the example companies with the ones you want to track. Set the <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">base_url</code>, add pages you want to diff, set watch keywords for terms you never want to miss, and configure which signals to track and at what alert frequency.</span>
+          </div>
+        </li>
+        <li class="proj-step">
+          <span class="proj-step-num">4</span>
+          <div class="proj-step-body">
+            <strong>Push and trigger</strong>
+            <span>Push your config. In the Actions tab, run the Daily CI workflow manually to confirm it works before waiting for the scheduled run. On the first run, the tool creates a <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">data</code> branch automatically to store snapshots and event history.</span>
+          </div>
+        </li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>What it monitors</summary>
+      <table class="proj-signal-table">
+        <thead>
+          <tr>
+            <th>Signal</th>
+            <th>How it works</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="proj-signal-name">Website diffs</td>
+            <td>Playwright scrapes the pages you specify and diffs the text against a saved snapshot. Reports added and removed fragments. Cookie banners and navigation noise are filtered out automatically.</td>
+          </tr>
+          <tr>
+            <td class="proj-signal-name">Job postings</td>
+            <td>Scrapes careers pages, extracts job titles, and detects new openings since the last run. Filterable by department and seniority level so you only hear about the roles that matter.</td>
+          </tr>
+          <tr>
+            <td class="proj-signal-name">Reviews</td>
+            <td>Monitors G2, Gartner Peer Insights, Capterra, TrustRadius, PeerSpot, and Spiceworks for new reviews and rating changes. Configure per-company which platforms to include.</td>
+          </tr>
+          <tr>
+            <td class="proj-signal-name">RSS / News</td>
+            <td>Polls RSS and Atom feeds for new articles. Automatically escalates to a daily alert when a watch keyword appears in the title or summary.</td>
+          </tr>
+          <tr>
+            <td class="proj-signal-name">Reddit</td>
+            <td>Searches configured subreddits for company name mentions and custom search terms. Filters low-engagement posts. Tracks post IDs to avoid duplicates across runs.</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details>
+      <summary>How signals are classified</summary>
+      <p>Every signal goes through a Gemini classifier (free tier via Google AI Studio) before it's alerted or digested. The classifier assigns a category and an importance score from 1 to 5. Events at or above your configured <code style="font-size:.85em; background: var(--soft-gray); padding: 1px 5px; border: 1px solid var(--border);">significance_threshold</code> (default: 4) trigger an immediate alert. Everything below goes to the weekly digest only.</p>
+      <table class="proj-score-table">
+        <tbody>
+          <tr><td class="proj-score-num">5</td><td>Act today. Funding, acquisition, exec departure, pricing overhaul, product launch.</td></tr>
+          <tr><td class="proj-score-num">4</td><td>Significant. Messaging shift, notable hire, new integration, partnership announcement.</td></tr>
+          <tr><td class="proj-score-num">3</td><td>Moderate. New blog post, minor copy change, new review, job posting.</td></tr>
+          <tr><td class="proj-score-num">2</td><td>Low signal. Logged, not alerted.</td></tr>
+          <tr><td class="proj-score-num">1</td><td>Noise. Ignored.</td></tr>
+        </tbody>
+      </table>
+      <p>Watch keywords are optional per-company terms that instruct the classifier to bias scores upward when those terms appear in the signal. Use them for product names, executive names, or events you cannot afford to miss. If no AI key is configured, the tool falls back to deterministic keyword-matching rules.</p>
+    </details>
+
+  </div>
+
+  <aside class="proj-sidebar reveal">
+
+    <div class="proj-sidebar-block">
+      <p class="proj-sidebar-label">Source Code</p>
+      <p class="proj-sidebar-value">GitHub template repo. One click to fork, five secrets to configure.</p>
+      <a href="https://github.com/stacyshelley1408/competitive-intelligence-tracker" target="_blank" rel="noopener noreferrer" class="proj-github-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <div class="proj-sidebar-block">
+      <p class="proj-sidebar-label">Tech Stack</p>
+      <div class="proj-pills">
+        <span class="proj-pill">Python 3.12</span>
+        <span class="proj-pill">GitHub Actions</span>
+        <span class="proj-pill">Playwright</span>
+        <span class="proj-pill">Gemini</span>
+      </div>
+    </div>
+
+    <div class="proj-sidebar-block">
+      <p class="proj-sidebar-label">Signals</p>
+      <div class="proj-pills">
+        <span class="proj-pill">Website diffs</span>
+        <span class="proj-pill">Job postings</span>
+        <span class="proj-pill">Reviews</span>
+        <span class="proj-pill">RSS / Atom</span>
+        <span class="proj-pill">Reddit</span>
+      </div>
+    </div>
+
+    <div class="proj-sidebar-block">
+      <p class="proj-sidebar-label">Cost</p>
+      <div class="proj-pills">
+        <span class="proj-pill">GitHub Actions: free</span>
+        <span class="proj-pill">Gemini: free tier</span>
+        <span class="proj-pill">SMTP: free</span>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<div class="proj-preview reveal">
+  <p class="proj-preview-label">Sample output</p>
+  <img src="/assets/images/ci-tracker-alert.svg" alt="CI Tracker daily alert email showing three events: a competitor pricing change scored 5/5, a hiring signal scored 4/5, and a news article scored 3/5">
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
