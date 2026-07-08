@@ -31,8 +31,10 @@ jobs:
       - name: Check gem vulnerabilities
         id: gem_audit
         continue-on-error: true
+        # --config is required: bundle-audit does NOT auto-load .bundler-audit.yml.
+        # That file documents the one advisory we intentionally ignore (webrick).
         run: |
-          bundle-audit check 2>&1 | tee /tmp/gem-audit.txt
+          bundle-audit check --config .bundler-audit.yml 2>&1 | tee /tmp/gem-audit.txt
           exit ${PIPESTATUS[0]}
 
       # ── Check 2: Jekyll build integrity ───────────────────────────────────

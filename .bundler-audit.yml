@@ -1,0 +1,12 @@
+---
+# Advisories intentionally ignored by bundler-audit. NOTE: bundle-audit does not
+# auto-load this file; the nightly-audit.yml workflow passes it via `--config`.
+#
+# CVE-2026-38969 / GHSA-h4w6-wx8r-p68v — WEBrick HTTP request smuggling (High).
+#   Not exposed: the live site is static HTML on GitHub Pages (jekyll build ->
+#   Pages CDN). WEBrick only runs during local `jekyll serve` on localhost, and
+#   is pulled in transitively by jekyll (webrick ~> 1.7) so it cannot be removed.
+#   No patched release exists (1.9.2 is latest as of 2026-07). Revisit and remove
+#   this entry when a fixed webrick version ships.
+ignore:
+  - CVE-2026-38969
