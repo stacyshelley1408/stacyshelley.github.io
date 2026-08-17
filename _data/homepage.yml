@@ -22,11 +22,11 @@ stats:
     detail: "ARR growth through Fortra acquisition"
     stat_id: "stat-1"
   - label: "Secureworks"
-    number_from: 8
+    number_from: 15
     number_to: 100
     prefix: "$"
     suffix: "M+"
-    display: "$8M"
+    display: "$15M"
     detail: "ARR growth through Dell acquisition"
     stat_id: "stat-2"
   - label: "Track record"
@@ -39,19 +39,19 @@ about:
   body: |
     I am a cybersecurity marketing leader with a track record of building go-to-market functions from early stage through successful exit. Not once, but twice. My work spans category creation, demand generation, analyst relations, ABM, and M&A integration, always in service of one goal:
 
-    Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I helped scale from under $2M to $26M ARR. Earlier at Secureworks, I was part of the team that grew from $8M to over $100M ARR ahead of the Dell acquisition.
+    Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I helped scale from under $2M to $26M ARR. Earlier at Secureworks, I was part of the team that grew from $15M to over $100M ARR ahead of the Dell acquisition.
   closing: "I thrive in the GTM build-out phase, delivering the strategies and foundational programs that drive sustainable growth. If you are a cybersecurity company ready to scale, I would love to talk."
 
 experience:
   - company: "Fortra, Eden Prairie, MN"
     role: "VP of Marketing, Digital Risk and Email Protection"
-    years: "January 2022 – February 2026"
+    years: "October 2021 – February 2026"
   - company: "PhishLabs, Charleston, SC"
     role: "VP of Marketing"
-    years: "January 2013 – December 2022"
+    years: "June 2013 – October 2021"
   - company: "Secureworks, Atlanta, GA"
     role: "Senior Marketing Manager"
-    years: "January 2006 – December 2013"
+    years: "March 2007 – June 2013"
 
 expertise:
   - icon: "trending-up"
@@ -68,7 +68,7 @@ expertise:
     description: "Navigating the marketing complexity of acquisitions: brand, messaging, team, and culture. Without losing momentum."
   - icon: "bar-chart-2"
     name: "Analyst Relations"
-    description: "Building credibility with Gartner, Forrester, IDC, etc. Turning AR into a strategic asset that supports growth."
+    description: "Building credibility with Gartner, Forrester, Frost, etc. Turning AR into a strategic asset that supports growth."
   - icon: "users"
     name: "Team Building"
     description: "Hiring and developing full-stack marketing teams at companies in the $5M–$100M ARR range. Culture, structure, and performance."
