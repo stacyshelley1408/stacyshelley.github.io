@@ -120,6 +120,35 @@ title: Stacy Shelley, Cybersecurity Marketing Leader
   </div>
 </section>
 
+{% if hp.media and hp.media.items %}
+<section id="media" class="media-section">
+  <div style="text-align: center; margin-bottom: 1rem;" class="reveal">
+    <p class="section-label" style="justify-content: center;">{{ hp.media.label }}</p>
+    <h2 class="section-heading">{{ hp.media.heading }}</h2>
+  </div>
+  <div class="media-grid">
+    {% for item in hp.media.items %}
+    <a class="media-card reveal" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+      <div class="media-window">
+        <img class="mw-fill" src="{{ item.image | relative_url }}" alt="" aria-hidden="true" loading="lazy">
+        <img class="mw-main" src="{{ item.image | relative_url }}" alt="{{ item.image_alt }}" loading="lazy">
+        <span class="mw-scrim" aria-hidden="true"></span>
+        <span class="mw-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><polygon points="9,6 19,12 9,18"/></svg>
+        </span>
+      </div>
+      <div class="media-meta">
+        <span class="media-source">{{ item.source }}</span>
+        <span class="media-format">{{ item.format }}</span>
+      </div>
+      <h3 class="media-title">{{ item.title }}</h3>
+      <p class="media-desc">{{ item.description }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <style>
   #contact.contact-section {
     background-image:

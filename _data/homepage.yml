@@ -73,6 +73,25 @@ expertise:
     name: "Team Building"
     description: "Hiring and developing full-stack marketing teams at companies in the $5M–$100M ARR range. Culture, structure, and performance."
 
+media:
+  label: "Featured In"
+  heading: "Recent conversations"
+  items:
+    - source: "XTalk · MarketScale"
+      format: "Video interview"
+      title: "The Expanding Threat Surface: Why Cybersecurity Is No Longer Optional for SMBs"
+      description: "How cloud, AI, and cryptocurrency reshaped the threat landscape, lowering the barrier to entry for attackers and widening the range of viable targets."
+      image: "/assets/images/media-xtalk-marketscale.jpg"
+      image_alt: "Stacy Shelley on camera with host Ben Thomas during the XTalk interview"
+      url: "https://www.marketscale.com/industries/software-and-technology/understanding-new-generation-corporate-cybersecurity-smb-risks/"
+    - source: "Content Amplified · Masset"
+      format: "Podcast · Ep. 457"
+      title: "Why the Content Mill Era Is Over and What Replaces It"
+      description: "On why content mills are dead, what replaces SEO-driven traffic, and how to measure content success."
+      image: "/assets/images/media-content-amplified.jpg"
+      image_alt: "Content Amplified podcast cover art"
+      url: "https://www.getmasset.com/resources/podcast/457-stacy-shelley"
+
 contact:
   heading: "Let's build something incredible!"
   subheading: "Available for fractional, advisory, and project-based engagements. Also open to CMO and VP of Marketing conversations at cybersecurity companies."
