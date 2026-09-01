@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What \"Good\" Looks Like, and Why Your AI Doesn't Know It"
+title: "What \"Good\" Looks Like, and Why Your AI Content Ain't It"
 date: 2026-09-01
 category: AI
 excerpt: "\"Draft a blog post\" is four words. Behind them sits everything I've learned about writing and never written down. Your AI can't guess any of it."
