@@ -13,13 +13,13 @@ hero:
     - "Team Builder."
     
 stats:
-  - label: "PhishLabs"
-    number_from: 2
-    number_to: 26
+  - label: "Exit value"
+    number_from: 0
+    number_to: 700
     prefix: "$"
-    suffix: "M"
-    display: "$2M"
-    detail: "ARR growth through Fortra acquisition"
+    suffix: "M+"
+    display: "$0M"
+    detail: "Combined acquisition value, PhishLabs and Secureworks"
     stat_id: "stat-1"
   - label: "Secureworks"
     number_from: 15
@@ -39,7 +39,7 @@ about:
   body: |
     I am a cybersecurity marketing leader with a track record of building go-to-market functions from early stage through successful exit. Not once, but twice. My work spans category creation, demand generation, analyst relations, ABM, and M&A integration, always in service of one goal:
 
-    Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I helped scale from under $2M to $26M ARR. Earlier at Secureworks, I was part of the team that grew from $15M to over $100M ARR ahead of the Dell acquisition.
+    Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I was everything marketing for a team the founder bootstrapped to just shy of $2M ARR, and built the function through the acquisition by Fortra. Earlier at Secureworks, I was part of the team that grew from $15M to over $100M ARR ahead of the Dell acquisition.
   closing: "I thrive in the GTM build-out phase, delivering the strategies and foundational programs that drive sustainable growth. If you are a cybersecurity company ready to scale, I would love to talk."
 
 experience:
