@@ -1,0 +1,189 @@
+<div class="gx" id="gx" aria-label="Interactive chart: what job postings ask each GTM role to do with AI">
+  <p class="gx-title">What job postings ask each role to do with AI</p>
+  <p class="gx-sub">Each posting counted once, at the most it asks of the role. Click any part of a bar to read what those postings say.</p>
+  <div class="gx-legend" id="gx-legend"></div>
+  <div class="gx-chart" id="gx-chart"><p class="gx-loading">Loading the data&hellip;</p></div>
+  <div class="gx-panel" id="gx-panel" aria-live="polite"></div>
+  <button type="button" class="gx-toggle" id="gx-toggle" aria-expanded="false">Show the numbers as a table</button>
+  <div class="gx-table" id="gx-table" hidden></div>
+  <noscript><img src="/assets/images/gtm-ai-asks-by-role.png" alt="Stacked bars showing what job postings ask each GTM role to do with AI" style="width:100%"></noscript>
+</div>
+
+<style>
+  .gx { --gx-ink:#0d1117; --gx-ink2:#3f4a52; --gx-muted:#6b7280; --gx-surf:#ffffff; --gx-line:#e6ecea;
+        background:var(--gx-surf); border:1px solid var(--border,#ccdeda); padding:1.75rem 1.5rem 1.25rem; margin:2.5rem 0;
+        font-family:var(--sans,'DM Sans',system-ui,sans-serif); color:var(--gx-ink); position:relative; }
+  .post-page-body .gx p { margin:0; line-height:1.5; }
+  .gx .gx-title { font-family:var(--serif,'Cormorant Garamond',Georgia,serif); font-size:1.6rem; font-weight:400; color:var(--gx-ink); }
+  .gx .gx-sub { font-size:.92rem; color:var(--gx-ink2); margin:.35rem 0 1.25rem; font-weight:300; }
+  .gx-legend { display:grid; grid-template-columns:auto 1fr; gap:.4rem .9rem; margin-bottom:1.25rem; align-items:start; }
+  .gx-legend .gx-lh { font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gx-muted); padding-top:.15rem; font-weight:500; }
+  .gx-legend .gx-li { display:flex; flex-wrap:wrap; gap:.3rem 1rem; }
+  .gx-key { display:inline-flex; align-items:center; gap:.4rem; font-size:.82rem; color:var(--gx-ink2); }
+  .gx-sw { width:12px; height:12px; border-radius:3px; display:inline-block; flex:none; }
+  .gx-group { font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gx-muted); font-weight:500; margin:1rem 0 .35rem; }
+  .gx-row { margin:.2rem 0 .7rem; }
+  .gx-rl { display:flex; justify-content:space-between; align-items:baseline; font-size:.9rem; color:var(--gx-ink); margin-bottom:.3rem; }
+  .gx-rl .gx-n { font-size:.75rem; color:var(--gx-muted); font-variant-numeric:tabular-nums; }
+  .gx-line { display:flex; align-items:center; gap:.75rem; }
+  .gx-bar { flex:1; display:flex; height:22px; }
+  .gx-seg { height:100%; border:0; padding:0; margin:0 2px 0 0; cursor:pointer; min-width:3px; transition:opacity .15s; }
+  .gx-seg:last-child { margin-right:0; border-radius:0 4px 4px 0; }
+  .gx-seg:focus-visible { outline:2px solid var(--gx-ink); outline-offset:2px; }
+  .gx.gx-has-sel .gx-seg:not(.gx-on) { opacity:.55; }
+  .gx-val { width:3rem; text-align:right; font-size:.95rem; font-weight:500; font-variant-numeric:tabular-nums; }
+  .gx-colhead { text-align:right; font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gx-muted); margin-bottom:-.4rem; }
+  .gx-axis { display:flex; justify-content:space-between; font-size:.7rem; color:var(--gx-muted); margin:.2rem 3.75rem 0 0; }
+  .gx-tip { position:absolute; pointer-events:none; background:var(--gx-ink); color:#fff; font-size:.78rem; line-height:1.35;
+            padding:.4rem .55rem; border-radius:4px; max-width:220px; z-index:5; display:none; }
+  .gx-panel:empty { display:none; }
+  .gx-panel { border-left:2px solid var(--warm,#00695c); background:var(--soft-gray,#eaf1f0); padding:1rem 1.2rem; margin-top:1.25rem; }
+  .gx-panel .gx-ph { font-size:.95rem; font-weight:500; color:var(--gx-ink); }
+  .gx-panel .gx-pd { font-size:.85rem; color:var(--gx-ink2); margin:.2rem 0 .6rem; }
+  .gx-panel ul { list-style:none; margin:0; padding:0; }
+  .gx-panel li { font-size:.88rem; line-height:1.55; color:var(--gx-ink); margin:.55rem 0; }
+  .gx-panel .gx-by { display:block; font-size:.75rem; color:var(--gx-muted); margin-top:.1rem; }
+  .gx-toggle { margin-top:1rem; background:none; border:1px solid var(--border,#ccdeda); color:var(--gx-ink2);
+               font:inherit; font-size:.78rem; letter-spacing:.06em; padding:.45rem .8rem; cursor:pointer; }
+  .gx-toggle:focus-visible { outline:2px solid var(--gx-ink); outline-offset:2px; }
+  .gx-table { overflow-x:auto; margin-top:.75rem; }
+  .gx-table table { border-collapse:collapse; width:100%; font-size:.8rem; font-variant-numeric:tabular-nums; }
+  .gx-table th, .gx-table td { padding:.35rem .45rem; border-bottom:1px solid var(--gx-line); text-align:right; }
+  .gx-table th:first-child, .gx-table td:first-child { text-align:left; }
+  .gx-table th { font-weight:500; color:var(--gx-ink2); font-size:.72rem; }
+  .gx-loading { color:var(--gx-muted); font-size:.85rem; }
+  @media (max-width:560px) { .gx { padding:1.25rem 1rem 1rem; } .gx-legend { grid-template-columns:1fr; } }
+</style>
+
+<script>
+(function () {
+  var LEVELS = {
+    govern:  { label: "Govern AI output", color: "#094c45", use: true,
+               desc: "Asked to set the standards AI output has to meet, or to govern it." },
+    build:   { label: "Build or redesign with AI", color: "#137267", use: true,
+               desc: "Asked to build AI workflows or tools, or to redesign how the work gets done." },
+    task:    { label: "Use AI on existing work", color: "#2e978e", use: true,
+               desc: "Asked to use AI on specific work the role already does." },
+    open:    { label: "“Be open to AI”", color: "#6fbdb6", use: true,
+               desc: "Asked to be open to AI or fluent with it, with no task named." },
+    subject: { label: "AI only as the thing sold or known", color: "#c3cbc9", use: false,
+               desc: "AI shows up only as the thing the role sells, markets or needs to understand." },
+    none:    { label: "No AI ask of the role", color: "#e4e9e8", use: false,
+               desc: "These postings don’t ask the person in the role to do anything with AI. They either never mention AI, or mention it only when describing the company." }
+  };
+  var ORDER = ["govern", "build", "task", "open", "subject", "none"];
+  var root = document.getElementById("gx");
+  if (!root) return;
+  var chart = document.getElementById("gx-chart"), panel = document.getElementById("gx-panel");
+  var tip = document.createElement("div"); tip.className = "gx-tip"; root.appendChild(tip);
+  var data, byId = {};
+
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function pct(k, n) { return Math.round(100 * k / n) + "%"; }
+
+  function legend() {
+    var box = document.getElementById("gx-legend");
+    [["Asked to use AI", true], ["Not asked", false]].forEach(function (g) {
+      box.appendChild(el("span", "gx-lh", g[0]));
+      var items = el("span", "gx-li");
+      ORDER.forEach(function (k) {
+        if (LEVELS[k].use !== g[1]) return;
+        var key = el("span", "gx-key"), sw = el("span", "gx-sw");
+        sw.style.background = LEVELS[k].color; key.appendChild(sw); key.appendChild(el("span", null, LEVELS[k].label));
+        items.appendChild(key);
+      });
+      box.appendChild(items);
+    });
+  }
+
+  function draw() {
+    chart.textContent = "";
+    chart.appendChild(el("div", "gx-colhead", "Asked to use AI"));
+    var group = null;
+    data.families.forEach(function (f) {
+      byId[f.id] = f;
+      if (f.group !== group) { group = f.group; chart.appendChild(el("div", "gx-group", group)); }
+      var row = el("div", "gx-row"), rl = el("div", "gx-rl");
+      rl.appendChild(el("span", null, f.label)); rl.appendChild(el("span", "gx-n", "n=" + f.n.toLocaleString()));
+      var line = el("div", "gx-line"), bar = el("div", "gx-bar"), use = 0;
+      ORDER.forEach(function (k) {
+        var c = f.counts[k]; if (!c) return;
+        if (LEVELS[k].use) use += c;
+        var b = el("button", "gx-seg");
+        b.type = "button"; b.style.background = LEVELS[k].color; b.style.flex = c + " 0 0";
+        b.dataset.f = f.id; b.dataset.k = k;
+        var summary = f.label + ": " + LEVELS[k].label + ", " + c.toLocaleString() + " of " + f.n.toLocaleString() + " postings (" + pct(c, f.n) + ")";
+        b.setAttribute("aria-label", summary + ". Show examples.");
+        b.addEventListener("mouseenter", function (e) { showTip(b, summary); });
+        b.addEventListener("focus", function () { showTip(b, summary); });
+        b.addEventListener("mouseleave", hideTip); b.addEventListener("blur", hideTip);
+        b.addEventListener("click", function () { select(f.id, k, true); });
+        bar.appendChild(b);
+      });
+      line.appendChild(bar); line.appendChild(el("span", "gx-val", pct(use, f.n)));
+      row.appendChild(rl); row.appendChild(line); chart.appendChild(row);
+    });
+    var ax = el("div", "gx-axis"); ["0%", "25%", "50%", "75%", "100%"].forEach(function (t) { ax.appendChild(el("span", null, t)); });
+    chart.appendChild(ax);
+  }
+
+  function showTip(b, text) {
+    tip.textContent = text; tip.style.display = "block";
+    var r = b.getBoundingClientRect(), o = root.getBoundingClientRect();
+    var left = Math.min(Math.max(r.left - o.left + r.width / 2 - 110, 8), o.width - 228);
+    tip.style.left = left + "px"; tip.style.top = (r.top - o.top - tip.offsetHeight - 8) + "px";
+  }
+  function hideTip() { tip.style.display = "none"; }
+
+  function select(fid, k, push) {
+    var f = byId[fid]; if (!f || !f.counts[k]) return;
+    root.classList.add("gx-has-sel");
+    Array.prototype.forEach.call(root.querySelectorAll(".gx-seg"), function (s) {
+      var on = s.dataset.f === fid && s.dataset.k === k;
+      s.classList.toggle("gx-on", on); s.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    panel.textContent = "";
+    var c = f.counts[k];
+    panel.appendChild(el("p", "gx-ph", f.label + " · " + LEVELS[k].label + " · " + c.toLocaleString() + " of " + f.n.toLocaleString() + " postings (" + pct(c, f.n) + ")"));
+    panel.appendChild(el("p", "gx-pd", LEVELS[k].desc));
+    var qs = (f.samples && f.samples[k]) || [];
+    if (qs.length) {
+      var ul = el("ul");
+      qs.forEach(function (q) {
+        var li = el("li"); li.appendChild(el("span", null, "“" + q.q + "”")); li.appendChild(el("span", "gx-by", q.by));
+        ul.appendChild(li);
+      });
+      panel.appendChild(ul);
+    }
+    if (push && history.replaceState) history.replaceState(null, "", "#gx=" + fid + ":" + k);
+  }
+
+  function table() {
+    var t = el("table"), head = el("tr");
+    ["Role", "Postings"].concat(ORDER.map(function (k) { return LEVELS[k].label; })).concat(["Asked to use AI"]).forEach(function (h) { head.appendChild(el("th", null, h)); });
+    t.appendChild(head);
+    data.families.forEach(function (f) {
+      var tr = el("tr"), use = 0;
+      tr.appendChild(el("td", null, f.label)); tr.appendChild(el("td", null, f.n.toLocaleString()));
+      ORDER.forEach(function (k) { if (LEVELS[k].use) use += f.counts[k]; tr.appendChild(el("td", null, f.counts[k] + " (" + pct(f.counts[k], f.n) + ")")); });
+      tr.appendChild(el("td", null, pct(use, f.n))); t.appendChild(tr);
+    });
+    var box = document.getElementById("gx-table"); box.appendChild(t);
+    var btn = document.getElementById("gx-toggle");
+    btn.addEventListener("click", function () {
+      var open = box.hidden; box.hidden = !open; btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.textContent = open ? "Hide the table" : "Show the numbers as a table";
+    });
+  }
+
+  fetch("/assets/data/gtm-ai-jobs-2026-09/explorer.json").then(function (r) { return r.json(); }).then(function (d) {
+    data = d; legend(); draw(); table();
+    var m = /gx=([a-z_]+):([a-z]+)/.exec(location.hash);
+    if (m) select(m[1], m[2], false);
+  }).catch(function () {
+    chart.textContent = "";
+    var img = el("img"); img.src = "/assets/images/gtm-ai-asks-by-role.png"; img.alt = "Stacked bars showing what job postings ask each GTM role to do with AI"; img.style.width = "100%";
+    chart.appendChild(img);
+  });
+})();
+</script>

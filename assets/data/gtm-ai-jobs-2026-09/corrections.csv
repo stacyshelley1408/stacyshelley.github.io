@@ -1,0 +1,49 @@
+audit,sentence_starts_with,corrected_codes,u5_kind,why
+2-U4,"Continuously evaluate new channels, technologies, AI-enabled workflows",U1,,"evaluate, no build, no task"
+2-U4,"Experiment with new tools, AI integrations, and automation to improve efficiency",U1,,"experiment for efficiency, no build, no task"
+2-U4,"Data, AI, automation, and marketing technology will support faster research",U2,,AI supports named tasks; no build
+2-U4,"Use AI, automation, and modern research platforms to scale the program",U2,,use AI to scale an existing program
+2-U4,A data strategist and AI innovator who leverages attribution insights,U1,,"'build' object is a revenue engine, not an AI system"
+2-U4,Predictive Retention: Use AI modeling,U2,,use AI for a named analysis task
+2-U4,Builder instincts: Hands-on with AI tools and curious to learn and build,U1,,disposition
+2-U4,"Passion for, and proven track record of, AI-enabled marketing",U1,,"disposition/track record, no build"
+2-U4,"Examples of using AI, agents, or automation to improve speed, quality, or insight",U1,,"no build, no named task"
+2-U4,Demonstrate a proven ability to leverage AI technologies and workflows to drive measurable operational efficiency,U1,,"efficiency, no build, no task"
+2-U4,Proven ability to leverage AI technologies and workflows to drive measurable operational efficiency,U1,,"efficiency, no build, no task"
+2-U4,"Experience leveraging automation, AI, and programmatic approaches to scale content creation",U2;U5,,scale a named task; U5 kept
+2-U4,"Champion innovation and experimentation, leveraging AI for CRM, automation opportunities",U2,,use AI on existing CRM work
+2-U4,Senior here means craft and automation leadership,U1,,'work with AI enabled processes' only
+2-U4,We expect you to use AI as a core part of how you and your team operate: accelerating analysis,U2,,accelerate named tasks
+2-U4,Use AI as a core part of how you and your team work: fluent with AI tools to accelerate data analysis,U2,,accelerate named tasks
+2-U4,"Identify opportunities to simplify processes, improve automation, and enhance the user experience through technology and AI",U1,,"no build, no task"
+2-U4,"Experience leveraging automation, AI, or workflow technology to improve business processes is a plus",U1,,"no build, no task"
+2-U4,Enough technical fluency to be dangerous: you can read an API doc,U2,,"prototyping with AI is a task done with AI (U2), as in 5 other prototyping sentences; no AI system built"
+2-U2,Leverage AI tools and emerging technologies to increase efficiency and optimize daily workflows,U1,,no named task
+2-U2,"Identify opportunities to scale successful programs while continuously testing new channels, messaging, tactics, and AI",U1,,"AI as something to test, no task done with it"
+2-U2,Enthusiasm for AI and a bias for experimentation-hands-on with AI tools,U1;S1,,work smarter = no task; AI story = S1
+2-U2,Use AI tools to improve acquisition performance and team efficiency,U1,,"outcomes, no task"
+2-U2,Comfortable using AI and marketing tooling to increase your output,U1,,no named task
+2-U2,Be curious and fluent in leveraging AI tools to increase effectiveness and efficiency,U1,,no named task
+2-U2,"Demonstrated, day-to-day use of AI tools in your own PMM work",U1,,"whole job, no named task"
+2-U2,AI & Workflow Aptitude: Proactive mindset using AI tools to optimize your workflow,U1,,no named task
+2-U2,Use AI thoughtfully in your own workflows to amplify your output,U1,,no named task
+2-U2,Brings a practical understanding of AI and agentic tools to improve individual output and team efficiency,U1,,no named task
+2-U2,Experience in leveraging AI to optimize partner programs and strategy,U1,,no named task
+2-U2,You use AI tools and marketing technology to work smarter and faster,U1,,no named task
+2-U2,Comfort using AI tools and modern marketing technology to move faster and work more efficiently,U1,,no named task
+2-U2,Experience using AI tools to do the work.,U1,,no named task
+2-U2,You use AI tools regularly to work smarter and can point to concrete examples,U1,,no named task
+2-U2,You're not using AI tools occasionally.,U1,,no named task
+2-U2,"Active, practical fluency with AI tools such as Claude, ChatGPT, or similar, with evidence",U1,,no named task
+2-U2,You use AI tools fluently in your own work and are always looking for new ways to move faster,U1,,no named task
+2-U2,You use AI tools daily to improve your own output and your team's,U1,,no named task
+2-U5,"Design and deploy AI-powered workflows (Claude, call-recording analysis, competitive monitoring)",U4,,"builds a workflow; no standard, review or governance duty"
+2-U5,The ideal candidate is not satisfied with how technical content has,U4;U5,self,"a 'without compromising accuracy' clause alone is a caveat, not a governance duty"
+2-U5,Help evaluate and develop AI-assisted creative workflows across ideation,U4;U5,self,"a 'without compromising craft' clause alone is a caveat, not a governance duty"
+asym,You use AI agents and skills in your day-to-day workflow.,U1,,"no task, nothing built (blind re-label 2026-09-27)"
+asym,"Leverage AI extensively to increase the speed, quality, and scale of execution.",U1,,no named task
+asym,If you’re a roll-up-your-sleeves builder and an AI-powered strategist,U1,,disposition; 'builder' is not an AI build
+asym,"You’ll actively experiment with new AI workflows to concept, prototype",U2,,prototyping with AI = U2 (prototyping rule)
+asym,"This is a builder’s role at a pivotal moment, requiring a leader who can define a bold vision for how MongoDB",S1,,"about positioning the company in an AI future, no AI use"
+asym,You and your team will be fully equipped with the absolute best-in-class AI tools,U3,,"role-level tool use to eliminate admin work, not a company-wide statement"
+asym,AI fluency means using these tools to amplify human judgment,U1,,"role disposition, not company-wide"
