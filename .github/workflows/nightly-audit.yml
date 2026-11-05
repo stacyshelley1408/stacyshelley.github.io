@@ -87,11 +87,10 @@ jobs:
 
           today = date.today().strftime("%Y-%m-%d")
 
-          def read_log(path, tail=30):
+          def read_log(path):
               try:
                   with open(path) as f:
-                      lines = f.readlines()
-                  return "".join(lines[-tail:]).strip()
+                      return f.read().strip()
               except FileNotFoundError:
                   return "(no output captured)"
 
