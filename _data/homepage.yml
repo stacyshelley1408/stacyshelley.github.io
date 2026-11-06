@@ -8,7 +8,6 @@ hero:
   descriptors:
     - "GTM Partner."
     - "Category Creator."
-    - "Fractional CMO."
     - "Pipeline Maker."
     - "Team Builder."
     
@@ -34,13 +33,13 @@ stats:
     detail: "Early-stage through exit, both times"
 
 about:
-  heading: "2 great exits. Ready to build the next one."
+  heading: "2 great exits. Still building."
   pull_quote: "Turning a great security product into a market-leading brand that delivers sustainable growth and enterprise value."
   body: |
     I am a cybersecurity marketing leader with a track record of building go-to-market functions from early stage through successful exit. Not once, but twice. My work spans category creation, demand generation, analyst relations, ABM, and M&A integration, always in service of one goal:
 
     Most recently, I served as VP of Marketing at Fortra, leading the $200M+ ARR portfolio of digital risk and email protection solutions. Before that, as VP of Marketing at PhishLabs, I was everything marketing for a team the founder bootstrapped to just shy of $2M ARR, and built the function through the acquisition by Fortra. Earlier at Secureworks, I was part of the team that grew from $15M to over $100M ARR ahead of the Dell acquisition.
-  closing: "I thrive in the GTM build-out phase, delivering the strategies and foundational programs that drive sustainable growth. If you are a cybersecurity company ready to scale, I would love to talk."
+  closing: "I thrive in the GTM build-out phase, delivering the strategies and foundational programs that drive sustainable growth."
 
 experience:
   - company: "Fortra, Eden Prairie, MN"
@@ -50,7 +49,7 @@ experience:
     role: "VP of Marketing"
     years: "June 2013 – October 2021"
   - company: "Secureworks, Atlanta, GA"
-    role: "Senior Marketing Manager"
+    role: "Senior Manager, Product and Solution Marketing"
     years: "March 2007 – June 2013"
 
 expertise:
@@ -93,8 +92,8 @@ media:
       url: "https://www.getmasset.com/resources/podcast/457-stacy-shelley"
 
 contact:
-  heading: "Let's build something incredible!"
-  subheading: "Available for fractional, advisory, and project-based engagements. Also open to CMO and VP of Marketing conversations at cybersecurity companies."
-  wink: "Ideally ones that are ready to grow fast. You know who you are."
+  heading: "Let's talk shop."
+  subheading: "Want to compare notes on cybersecurity marketing, or argue with something I wrote? I'm easy to find."
+  wink: "Dad jokes also accepted."
   linkedin_url: "https://www.linkedin.com/in/stacyshelley/"
   email: "hey@stacyshelley.com"
